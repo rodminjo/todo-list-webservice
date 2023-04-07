@@ -1,62 +1,44 @@
 <!DOCTYPE html>
-<html
-  lang="ko"
-  xmlns:th="http://www.thymeleaf.org"
-  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
->
-  <th:block th:replace="fragments/header :: headerFragment"></th:block>
-
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/posts-save.css" />
+    <title>Post 글쓰기</title>
+    <th:block th:replace="layout/config::configFragment"></th:block>
+    <script defer src="/js/posts-save-picture.js"></script>
+    <script defer src="/js/posts-save-btn.js"></script>
+  </head>
   <body>
-    <h1>게시글 등록</h1>
-
-    <div class="col-md-12">
-      <div class="col-md-4">
-        <form action="">
-          <div class="form-group">
-            <label for="title">제목</label>
-            <input
-              type="text"
-              class="form-control"
-              id="title"
-              placeholder="제목을 입력하세요"
-            />
+    <div class="wrapper">
+      <th:block th:replace="layout/header::headerFragment"></th:block>
+      <main class="boardSubmitPage">
+        <section class="leftSection">
+          <input class="boardTitle" type="text" value="title" id="title"/>
+          <textarea class="boardContent" id="content">content</textarea>
+        </section>
+        <section class="rightSection">
+          <div class="inputRight">
+            <div class="slider">
+              <i class="fa-solid fa-arrow-right right hidden"></i>
+              <i class="fa-solid fa-arrow-left left hidden"></i>
+              <div class="sliderImages">
+                <p>이미지를 업로드해주세요</p>
+              </div>
+            </div>
+            <form enctype="multipart/form-data" id="form">
+              <input type="file" multiple accept="image/*" class="multipleImage" id="files"/>
+            </form>
           </div>
-
-          <div class="form-group">
-            <label for="author">작성자</label>
-            <input
-              type="text"
-              class="form-control"
-              id="author"
-              placeholder="작성자를 입력하세요"
-            />
+          <div class="btnWrapper">
+            <button id="btn-save">submit</button>
+            <button onclick="location.href='/posts'">cancel</button>
           </div>
-
-          <div class="form-group">
-            <label for="content">내용</label>
-            <textarea
-              class="form-control"
-              id="content"
-              placeholder="내용을 입력하세요"
-            ></textarea>
-          </div>
-
-          <!-- <div class="form-group">
-            <label for="checked">달성</label>
-            <input type="checkbox"
-              class="form-control"
-              id="checked"
-            ></input>
-          </div> -->
-        </form>
-
-        <a href="/" role="button" class="btn btn-primary">취소</a>
-        <button type="button" class="btn btn-primary" id="btn-save">
-          등록
-        </button>
-      </div>
+        </section>
+      </main>
+      <th:block th:replace="layout/footer::footerFragment"></th:block>
     </div>
-
-
-  <th:block th:replace="fragments/footer :: footerFragment"></th:block>
+  </body>
 </html>

@@ -26,9 +26,9 @@ class PostsRepositoryTest {
         //given
         String title = "test title";
         String content = "test content";
-        Boolean checked = true;
 
-        postsRepository.save(Posts.builder().title(title).content(content).author("JKM").checked(checked).build());
+
+        postsRepository.save(Posts.builder().title(title).content(content).viewCount(0).build());
 
         //when
         List<Posts> postsList = postsRepository.findAll();
@@ -37,7 +37,6 @@ class PostsRepositoryTest {
         Posts posts = postsList.get(0);
         Assertions.assertThat(posts.getTitle()).isEqualTo(title);
         Assertions.assertThat(posts.getContent()).isEqualTo(content);
-        Assertions.assertThat(posts.getChecked()).isEqualTo(checked);
 
     }
 
@@ -46,9 +45,8 @@ class PostsRepositoryTest {
         //given
         String title = "test title";
         String content = "test content";
-        Boolean checked = true;
 
-        postsRepository.save(Posts.builder().title(title).content(content).author("JKM").checked(checked).build());
+        postsRepository.save(Posts.builder().title(title).content(content).viewCount(0).build());
 
         //when
         List<Posts> postsList = postsRepository.findAll();

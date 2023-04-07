@@ -1,4 +1,4 @@
-package todo.list_service.web.dto;
+package todo.list_service.web.dto.posts;
 
 
 import lombok.Builder;
@@ -8,14 +8,16 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class PostsUpdateRequestDto {
+    private Long postId;
     private String title;
     private String content;
-    private Boolean checked;
 
     @Builder
-    public PostsUpdateRequestDto(String title, String content, Boolean checked) {
+    public PostsUpdateRequestDto(String title, String content) {
         this.title = title;
         this.content = content;
-        this.checked = checked;
+    }
+    public void setPostId(Long postId) {
+        this.postId = postId;
     }
 }

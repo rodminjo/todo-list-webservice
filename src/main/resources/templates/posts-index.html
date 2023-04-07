@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org" >
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/posts-index.css" />
+  <title>Post</title>
+  <th:block th:replace="layout/config::configFragment"></th:block>
+  <script defer src="/js/post-index.js"></script>
+</head>
+<body>
+<div class="wrapper">
+  <th:block th:replace="layout/header::headerFragment"></th:block>
+  <section class="freeBoard">
+    <div class="freeBoard-top">
+      <select class="freeBoard-top_option" id="sort" onchange="sort()">
+        <option value="1" th:selected="${select}==1">최신순</option>
+        <option value="2" th:selected="${select}==2">조회순</option>
+        <option value="3" th:selected="${select}==3">댓글순</option>
+      </select>
+      <a href="/posts/save">게시글 작성</a>
+    </div>
+    <main class="freeBoard-main">
+      <div class="table">
+        <table>
+          <thead>
+          <tr class="thead-row">
+            <th>Image</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Comment / Look</th>
+            <th>Updated</th>
+          </tr>
+          </thead>
+          <thead class="thead-col">
+          <th:block th:each="post, i :${posts}">
+          <tr>
+            <th th:text="${i.index}+1">Sample #1</th>
+          </tr>
+          </th:block>
+          </thead>
+          <tbody>
+          <td>1</td>
+          <td>타이틀</td>
+          <td>글쓴이</td>
+          <td>댓글 / 조회수</td>
+          <td>수정날짜</td>
+          </tbody>
+          <th:block th:each="post : ${posts}">
+            <tbody>
+            <td>
+              <img th:if="${post.storedFileName != null}" th:src="@{/display?file={fileName}(fileName=${post.storedFileName})}" alt="#" class="img" />
+              <img th:unless="${post.storedFileName != null}" src="https://www.flaticon.com/kr/free-icons/-" alt="#" class="img" />
+            </td>
+            <td><a th:href="@{/posts/update/{id}(id=${post.id})}" th:text="${post.title}">타이틀</a></td>
+            <td th:text="${post.author}">글쓴이</td>
+            <td th:text="${post.replyCount}+' / '+${post.viewCount}">댓글,조회수</td>
+            <td th:text="${#strings.substring(post.createdDate,0,10)} + '  ' + ${#strings.substring(post.createdDate,11,16)}">수정날짜</td>
+            </tbody>
+          </th:block>
+          </tbody>
+        </table>
+      </div>
+    </main>
+    <form class="search" method="get" action="/posts">
+      <input type="text" placeholder="search" name="search"/>
+      <button><i class="fa-solid fa-magnifying-glass"></i></button>
+    </form>
+  </section>
+  <th:block th:replace="layout/footer::footerFragment"></th:block>
+</div>
+</body>
+</html>
