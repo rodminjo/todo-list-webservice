@@ -17,6 +17,7 @@ import todo.list_service.domain.user.UserRepository;
 
 import javax.servlet.http.HttpSession;
 import java.util.Collections;
+import java.util.Random;
 
 //OAuth2UserService를 구현하여 로그인 이후 가져온 사용자 정보들을 기반으로 가입, 정보 수정등 기능 지원
 @RequiredArgsConstructor
@@ -58,7 +59,16 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         User user = userRepository.findByEmail(attributes.getEmail())
                 .map(entity -> entity.update(attributes.getName(), attributes.getPicture()))
                 .orElse(attributes.toEntity());
+        if (user.getNickName() == null){
+            //a~z로 이루어진 10자리 랜덤문자열 생성
+            Random random = new Random();
+            String generatedString = random.ints(97, 122 + 1)
+                    .limit(10)
+                    .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                    .toString();
 
+            user.nickNameSetting(generatedString);
+        }
         return userRepository.save(user);
     }
 }

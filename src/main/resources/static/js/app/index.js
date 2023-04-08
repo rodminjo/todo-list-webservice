@@ -10,6 +10,9 @@ var main = {
     $('#btn-delete').on('click', function () {
       _this.delete();
     });
+    $('#btn-saveTodo').on('click', function () {
+      _this.saveTodo();
+    });
   },
 
   save: function () {
@@ -70,6 +73,8 @@ var main = {
       alert(JSON.stringify(error));
     });
   }
+
+
 };
 
 main.init();

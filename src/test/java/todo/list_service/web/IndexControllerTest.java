@@ -18,6 +18,6 @@ class IndexControllerTest {
         String body = testRestTemplate.getForObject("/", String.class);
 
         //then
-        Assertions.assertThat(body).contains("웹서비스");
+        Assertions.assertThat(body).contains("Todo");
     }
 }

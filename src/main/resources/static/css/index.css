@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;600&display=swap');
+
+:root {
+  --font-highLight: 'Oswald', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:link,
+a:visited {
+  color: black;
+}
+
+body {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  min-height: 100%;
+  background: url(https://images.unsplash.com/photo-1456324504439-367cee3b3c32?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)
+    no-repeat;
+  background-position: center;
+  background-size: cover;
+  backdrop-filter: blur(2px);
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  outline: none;
+  border: none;
+  padding: 0;
+}
+
+.wrapper {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.social_Login {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.btn_social {
+  margin-top: 3rem;
+  background-color: transparent;
+  width: 240px;
+  height: 50px;
+  transition: all 0.4s;
+}
+
+.btn_social:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.btn_social img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.clock {
+  color: white;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: url(https://images.unsplash.com/photo-1472289065668-ce650ac443d2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80)
+    no-repeat center;
+  width: 260px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  border-radius: 100%;
+  font-family: var(--font-highLight);
+  font-size: 38px;
+  padding: 4rem 8rem;
+}
+
+.clock h1::after {
+  content: '';
+  position: absolute;
+  left: 120px;
+  bottom: 134px;
+  width: 280px;
+  height: 4px;
+  background-color: white;
+  border-radius: 5px;
+  transform-origin: right;
+  transition: transform 0.5s;
+  transform: scaleX(0);
+}
+
+.clock h1:hover {
+  cursor: pointer;
+}
+.clock h1:hover::after {
+  transform-origin: left;
+  transform: scaleX(1);
+}
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(40px);
+  width: 100%;
+  height: 85px;
+}
+
+.footer {
+  padding: 0.1rem 0;
+  display: flex;
+  align-items: center;
+}
+
+.footer h2 {
+  font-size: 1rem;
+}

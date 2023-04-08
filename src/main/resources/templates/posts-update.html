@@ -58,12 +58,14 @@
               <th:block th:each="reply, i:${posts.replyDtos}">
                 <th:block th:if="${reply.userId.equals(userId)}">
                   <div class="commentUser">
+                    <div class="profileWrapper">
                       <span th:if="${reply.replyLevel} > 0"><i class="fa-solid fa-turn-down-right reply"></i></span>
-                    <img
-                      src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-                      th:src="${reply.picture}"
-                      alt="user"
-                    />
+                      <img
+                              src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                              th:src="${reply.picture}"
+                              alt="user"
+                      />
+                    </div>
                     <div class="userName" th:text="${reply.nickName}">익명</div>
                     <span th:if="${reply.replyLevel} > 1" th:text="'@'+${reply.replyParent}"></span>
                     <textarea th:id="'update'+${i.index}" th:text="${reply.content}"></textarea>

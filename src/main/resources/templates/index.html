@@ -1,50 +1,57 @@
 <!DOCTYPE html>
-<html
-  lang="ko"
-  xmlns:th="http://www.thymeleaf.org"
-  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
->
-  <th:block th:replace="fragments/header :: headerFragment"></th:block>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org" >
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/index.css" />
+    <title>Rodminjo's portfolio main pages</title>
+    <script>
+      function setClock(){
+        var dateInfo = new Date();
+        var hour = modifyNumber(dateInfo.getHours());
+        var min = modifyNumber(dateInfo.getMinutes());
+        var sec = modifyNumber(dateInfo.getSeconds());
+        document.getElementById("time").innerHTML = hour + ":" + min  + ":" + sec;
+      };
+      function modifyNumber(time){
+        if(parseInt(time)<10){
+          return "0"+ time;
+        }
+        else
+          return time;
+      };
 
+      window.onload = function(){
+        setClock();
+        setInterval(setClock,1000); //1초마다 setClock 함수 실행
+      };
+
+    </script>
+  </head>
   <body>
-    <h1>스프링 부트 ToDo 웹서비스</h1>
-    <div class="col-md-12">
-      <div class="row">
-        <div class="col-md-6">
-          <a href="/posts/save/" role="button" class="btn btn-primary"
-            >글 등록</a
-          >
-          <th:block th:if="${not #strings.isEmpty(userName)}">
-            Logged in as : <span id ="user" th:text="${userName}"></span>
-            <a href="/logout" class="btn btn-info active" role="button">Logout</a>
-          </th:block>
-          <th:block th:unless="${not #strings.isEmpty(userName)}">
-            <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>
-            <a href="/oauth2/authorization/naver" class="btn btn-secondary active" role="button">Naver Login</a>
-          </th:block>
-        </div>
+    <div class="wrapper">
+      <div class="clock">
+        <a href="/main">
+          <h1>Todo list</h1>
+        </a>
+        <div id="time"></div>
       </div>
-      <br />
 
-      <table class="table table-horizonal table-bordered">
-        <thead class="thead-strong">
-          <tr>
-            <th>게시글번호</th>
-            <th>제목</th>
-            <th>작성자</th>
-            <th>최종수정일</th>
-          </tr>
-        </thead>
-        <tbody id="tbody">
-          <tr th:each="post:${posts}">
-            <td th:text="${post.id}"></td>
-            <td><a th:href="@{/posts/update/{id}/(id=${post.id})}" th:text="${post.title}"></a></td>
-            <td th:text="${post.author}"></td>
-            <td th:text="${post.modifiedDate}"></td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="social_Login">
+        <button class="btn_social">
+          <a href="/oauth2/authorization/naver">
+          <img src="/images/assets/btn_naver.png" />
+        </a>
+        </button>
+        <button class="btn_social">
+          <a href="/oauth2/authorization/google">
+          <img src="/images/assets/btn_google.png" />
+          </a>
+        </button>
+      </div>
+      <th:block th:replace="layout/footer::footerFragment"></th:block>
     </div>
-
-  <th:block th:replace="fragments/footer :: footerFragment"></th:block>
+  </body>
 </html>

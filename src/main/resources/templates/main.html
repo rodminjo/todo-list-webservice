@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org" >
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <title>MainPage</title>
+    <th:block th:replace="layout/config::configFragment"></th:block>
+  </head>
+  <body>
+    <div class="wrapper">
+      <th:block th:replace="layout/header::headerFragment"></th:block>
+      <section class="menu">
+        <div class="menuTop">
+          <div class="commonMenu todo" onclick="location.href='/todo'">Todo</div>
+          <div class="commonMenu free" onclick="location.href='/posts'">Free Board</div>
+        </div>
+        <div class="menuDown">
+          <div class="commonMenu timer" onclick="location.href='/timer'">Timer</div>
+          <div class="commonMenu ranking" onclick="location.href='/ranking'">Ranking</div>
+        </div>
+      </section>
+      <th:block th:replace="layout/footer::footerFragment"></th:block>
+    </div>
+  </body>
+</html>

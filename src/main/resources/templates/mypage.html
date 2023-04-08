@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org" >
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Page</title>
+  <link rel="stylesheet" href="/css/mypage.css" />
+  <th:block th:replace="layout/config::configFragment"></th:block>
+  <script defer src="/js/mypage.js"></script>
+</head>
+<body>
+<div class="wrapper">
+  <th:block th:replace="layout/header::headerFragment"></th:block>
+  <section class="myPage">
+    <div class="userProfile">
+      <img
+              src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+              th:src="${userPicture}"
+              alt="userProfile"
+      />
+    </div>
+    <div class="user">
+      <div>
+        <input type="text" class="userNickName" value="($)userNickName" th:value="${userNickName}" id="userNickName"/>
+        <input type="button" value="중복확인" class="btn-nickName-update" onclick="idChecked()"/>
+      </div>
+       <div class="idCheck" id="idCheck"></div>
+      <div class="userEmail" th:text="${userEmail}">example@google.com</div>
+      <div class="userInfo">치킨횟수할일갯수작성글갯수</div>
+      <input type="button" value="수정" class="btn-nickName-update" onclick="idChange()"/>
+      <input type="button" value="취소" class="btn-nickName-update" onclick="location.href='/'"/>
+    </div>
+  </section>
+  <th:block th:replace="layout/footer::footerFragment"></th:block>
+</div>
+</body>
+</html>

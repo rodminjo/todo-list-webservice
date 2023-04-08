@@ -13,6 +13,7 @@ import javax.persistence.*;
 public class User extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "USER_ID")
     private Long id;
     @Column(nullable = false)
     private String name;
@@ -23,6 +24,9 @@ public class User extends BaseTimeEntity {
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Role role;
+    @Column(length = 20)
+    private String nickName;
+
 
     @Builder
     public User(String name, String email, String picture, Role role) {
@@ -41,5 +45,9 @@ public class User extends BaseTimeEntity {
 
     public String getRoleKey(){
         return this.role.getKey();
+    }
+
+    public void nickNameSetting(String nickName){
+        this.nickName = nickName;
     }
 }
