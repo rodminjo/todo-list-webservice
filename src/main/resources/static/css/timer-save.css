@@ -1,0 +1,270 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;600&display=swap");
+
+:root {
+  --font-highLight: "Oswald", sans-serif;
+}
+
+.wrapper {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.nav {
+  background-color: rgba(0, 0, 0, 0.7);
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  padding: 1rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 40px;
+}
+
+nav a {
+  transition: all 0.2s;
+  color: #ffffff;
+}
+
+nav a:hover {
+  color: #3f94b9;
+}
+
+.nav_left {
+  font-size: 1.2rem;
+  display: flex;
+}
+
+.nav i {
+  font-size: 1rem;
+}
+
+.nav_right {
+  font-size: 1.2rem;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav_right i {
+  margin-right: 0.4rem;
+}
+
+body {
+  overflow: hidden;
+  font-weight: 300;
+  font-family: var(--main-font-family);
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  min-height: 100%;
+  background: url(https://images.unsplash.com/photo-1511992243105-2992b3fd0410?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)
+    no-repeat;
+  background-position: center;
+  background-size: cover;
+  backdrop-filter: blur(2px);
+  margin: 0;
+  padding: 0;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(40px);
+  width: 100%;
+  height: 85px;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+}
+
+.footer h2 {
+  font-size: 1rem;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.timer-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 125px;
+}
+
+.timer {
+  display: flex;
+  justify-content: center;
+  font-size: 60px;
+  margin-bottom: 30px;
+  transition: all 1s;
+  font-weight: bold;
+}
+
+.timer-form_Btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  padding-bottom: 25px;
+}
+
+.timerBtn {
+  height: 30px;
+  width: 100px;
+  border-radius: 25px;
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.timerBtn i {
+  font-size: 22px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.timerBtn i:active,
+.timerBtn i:hover {
+  font-size: 30px;
+}
+
+.start {
+  margin: 50px;
+  bottom: 30px;
+  font-size: 100px;
+  margin: Opx;
+  padding: Opx;
+}
+.start + div > .timerBtn:nth-child(1) {
+  display: none;
+}
+
+.refresh {
+  margin: 50px;
+  bottom: 30px;
+  font-size: 100px;
+  margin: Opx;
+  padding: Opx;
+}
+.refresh + div > .timerBtn:nth-child(4) {
+  display: none;
+}
+
+.commonTimeAfter {
+  position: relative;
+}
+
+.commonTimeAfter::after {
+  position: absolute;
+  right: -25px;
+  top: -5px;
+  content: ":";
+  color: gray;
+}
+
+::-webkit-scrollbar {
+  width: 0.6rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #31bc86;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: aliceblue;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #2a8260;
+}
+
+.dateAndBtn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.timerBtn {
+  margin: 2.1rem 0;
+  width: 70%;
+  padding: 0.6rem 2rem;
+  transition: all 0.2s;
+}
+
+.timerBtn:hover {
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  border-radius: 12px;
+}
+
+.dateAndBtn time {
+  border-radius: 4px;
+  font-family: var(--font-highLight);
+  color: white;
+  font-weight: 600;
+  width: 100px;
+  height: 30px;
+  background-color: #40c994;
+  text-align: center;
+}
+
+.bottomSection {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 4rem;
+}
+
+.bot_left {
+  width: 200px;
+  text-align: center;
+}
+
+.left_common {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  margin: 1rem 0;
+  background-color: #3f94b9;
+  width: 100%;
+  height: 40px;
+}
+
+.category {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-weight: bold;
+}
+
+.select_ategory {
+  text-align: center;
+  width: 6rem;
+}

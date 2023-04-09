@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/todo-update.css" />
+    <title>To Do List 상세보기</title>
+    <th:block th:replace="layout/config::configFragment"></th:block>
+    <script defer th:inline="javascript">
+      /*<![CDATA[*/
+      var storedImg = [[${todo.todoImg}]];
+      /*]]>*/
+    </script>
+    <script defer src="/js/todo-update.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <th:block th:replace="layout/header::headerFragment"></th:block>
+      <section class="checkUpdate">
+          <div class="inputs">
+            <div class="inputLeft">
+              <input type="hidden" th:value="${todo.id}" id="id" />
+              <input type="date" value="2023-03-31" th:value="${todo.todoDate}" id="todoDate" />
+              <input type="text" value="title"th:value="${todo.title}" id="title"/>
+              <textarea id="content" th:text="${todo.content}">ex)여행가기</textarea>
+            </div>
+            <div class="inputRight">
+              <div class="slider">
+                <i class="fa-solid fa-arrow-right right hidden"></i>
+                <i class="fa-solid fa-arrow-left left hidden"></i>
+                <div class="sliderImages">
+                  <p>이미지를 업로드해주세요</p>
+                </div>
+              </div>
+              <form enctype="multipart/form-data" id="form">
+              <input type="file" multiple accept="image/*" class="multipleImage" id="files"/>
+              </form>
+            </div>
+          </div>
+
+          <div class="handleButton">
+            <button id="btn-update">update</button>
+            <button id="btn-delete">delete</button>
+            <button id="btn-cancel" onclick="location.href='/todo/'">cancel</button>
+          </div>
+
+      </section>
+      <th:block th:replace="layout/footer::footerFragment"></th:block>
+    </div>
+  </body>
+</html>

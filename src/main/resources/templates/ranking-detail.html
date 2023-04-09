@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/ranking-detail.css" />
+    <title>Ranking 상세보기</title>
+    <th:block th:replace="layout/config::configFragment"></th:block>
+    <script defer th:inline="javascript">
+      /*<![CDATA[*/
+      var id = [[${ranking.id}]];
+      var reply = [[${ranking.replyRankingListResponseDto}]];
+      var total = [[${ranking.totalDoingTime}]];
+      /*]]>*/
+    </script>
+    <script defer src="/js/ranking-detail-convert.js"></script>
+    <script src="/js/ranking-detail-btn.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <th:block th:replace="layout/header::headerFragment"></th:block>
+      <main class="rankingDetailMain">
+        <section class="left">
+          <div class="timer">
+              <div id="time" class="time"></div>
+          </div>
+          <div class="rankingBtnWrapper">
+            <div class="table">
+              <table>
+                <thead>
+                <tr class="thead-row">
+                  <th>Category</th>
+                  <th>Title</th>
+                  <th>Record</th>
+                </tr>
+                </thead>
+                <thead class="thead-col">
+                <th:block th:each="timer, i:${ranking.timerListResponseDto}">
+                  <tr >
+                    <th th:text="${i.index}+1"></th>
+                  </tr>
+                </th:block>
+                </thead>
+                <tbody>
+                <td>카테고리..</td>
+                <td>타이틀</td>
+                <td>....date</td>
+                </tbody>
+                <th:block th:each="timer:${ranking.timerListResponseDto}">
+                  <tbody>
+                  <input type="hidden" th:value="${timer.id}">
+                  <td th:text="${timer.category}"></td>
+                  <td th:text="${timer.title}">title</td>
+                  <td th:text="${timer.convertingDoingTime}"></td>
+                  </tbody>
+                </th:block>
+              </table>
+            </div>
+          </div>
+        </section>
+        <section class="right">
+          <div class="comment">
+            <th:block th:each="reply, i:${ranking.replyRankingListResponseDto}">
+              <th:block th:if="${userId.equals(reply.userId)}">
+                <div class="commentUser">
+                  <img
+                    src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                    th:src="${reply.picture}"
+                    alt="user"
+                  />
+                  <div class="userName" th:text="${reply.nickName}">익명</div>
+                  <input th:id="'update'+${i.index}" th:value="${reply.replyContent}">
+                  <span th:onclick="'replyRankingUpdate('+${i.index}+')'"> <i class="fa-solid fa-edit"></i></span>
+                  <span th:onclick="'replyRankingDelete('+${i.index}+')'"> <i class="fa-solid fa-xmark"></i></span>
+                </div>
+              </th:block>
+              <th:block th:unless="${userId.equals(reply.userId)}">
+                <div class="commentUser">
+                  <img
+                          src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                          th:src="${reply.picture}"
+                          alt="user"
+                  />
+                  <div class="userName" th:text="${reply.nickName}">익명</div>
+                  <span th:text="${reply.replyContent}">우왕개쩌네요</span>
+                </div>
+              </th:block>
+            </th:block>
+          </div>
+          <div class="postComment">
+            <input type="text" id="replyContent"/>
+            <button type="submit" onclick="replyRankingSave()"><i class="fa-regular fa-comment"></i></button>
+          </div>
+        </section>
+      </main>
+      <th:block th:replace="layout/footer::footerFragment"></th:block>
+    </div>
+  </body>
+</html>

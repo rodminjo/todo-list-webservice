@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;600&display=swap');
+
+:root {
+  --font-highLight: 'Oswald', sans-serif;
+}
+
+.wrapper {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.nav {
+  background-color: rgba(0, 0, 0, 0.7);
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  padding: 1rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 40px;
+}
+
+nav a {
+  transition: all 0.2s;
+  color: #ffffff;
+}
+
+nav a:hover {
+  color: #3f94b9;
+}
+
+.nav_left {
+  font-size: 1.2rem;
+  display: flex;
+}
+
+.nav i {
+  font-size: 1rem;
+}
+
+.nav_right {
+  font-size: 1.2rem;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav_right i {
+  margin-right: 0.4rem;
+}
+
+body {
+  overflow: hidden;
+  font-weight: 300;
+  font-family: var(--main-font-family);
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  min-height: 100%;
+  background: url(https://images.unsplash.com/photo-1511992243105-2992b3fd0410?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)
+    no-repeat;
+  background-position: center;
+  background-size: cover;
+  backdrop-filter: blur(2px);
+  margin: 0;
+  padding: 0;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-around;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(40px);
+  width: 100%;
+  height: 85px;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+}
+
+.footer h2 {
+  font-size: 1rem;
+}
+
+.checkUpdate {
+  padding: 2rem 6rem;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+}
+
+.inputs {
+  display: flex;
+}
+
+.inputLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-right: 2rem;
+}
+
+.inputLeft input {
+  width: 200px;
+  height: 40px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.inputLeft textarea {
+  resize: none;
+  height: 140px;
+}
+
+.inputRight {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.inputRight input[type='file'] {
+  color: white;
+}
+
+.handleButton {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.handleButton button {
+  padding: 0.8rem 2rem;
+}
+
+.handleButton button:hover {
+  cursor: pointer;
+  background-color: black;
+  color: white;
+}
+
+.slider {
+  position: relative;
+  width: 400px;
+  height: 320px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.sliderImages img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.sliderImages {
+  transform: translateX(0);
+  transition: all 0.3s;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.right {
+  z-index: 29;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  color: black;
+  font-size: 1.4rem;
+  transition: all 0.2s;
+}
+
+.left {
+  z-index: 29;
+
+  position: absolute;
+  left: 0;
+  top: 50%;
+  color: black;
+  font-size: 1.4rem;
+  transition: all 0.2s;
+}
+
+.slider i:hover {
+  cursor: pointer;
+  color: white;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.sliderImages p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+

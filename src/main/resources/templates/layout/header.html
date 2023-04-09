@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+    <th:block th:fragment="headerFragment">
+        <nav class="nav">
+            <div class="nav_left">
+                <a class="mainLogo" href="/main"><i class="fas fa-home"></i></a>
+            </div>
+            <th:block th:if="${not #strings.isEmpty(userName)}">
+                <div class="nav_right">
+                    <a href="#" class="nickName" th:text="${userName}">($)userNickName</a>
+                    <a href="/logout" class="login"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
+                    <a href="/mypage" class=""><i class="fa-solid fa-user"></i>MyPage</a>
+                </div>
+            </th:block>
+            <th:block th:unless="${not #strings.isEmpty(userName)}">
+                <div class="nav_right">
+                    <a href="#" class="nickName">Guest</a>
+                    <a href="/login" class="login"><i class="fa-solid fa-right-from-bracket"></i>Login</a>
+                    <a href="/mypage" class=""><i class="fa-solid fa-user"></i>MyPage</a>
+                </div>
+            </th:block>
+        </nav>
+    </th:block>
+</html>

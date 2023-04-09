@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/timer-update.css" />
+    <title>Timer 상세보기</title>
+    <th:block th:replace="layout/config::configFragment"></th:block>
+    <script defer th:inline="javascript">
+      /*<![CDATA[*/
+      var start = [[${timer.startTime}]];
+      var doing = [[${timer.doingTime}]];
+      /*]]>*/
+      </script>
+    <script defer src="/js/timer-update.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <th:block th:replace="layout/header::headerFragment"></th:block>
+      <section>
+        <div class="timer">
+          <div id="time" class="time"></div>
+          <div id="date" class="date"></div>
+        </div>
+        <div>
+          <div class="bottomSection">
+            <div class="bot_left">
+              <div class="left_common category">
+                <div>category :</div>
+                <div>
+                  <input type="hidden" th:value="${timer.id}" id="timerId">
+                  <select id="select_category" class="selectCategory">
+                    <option value="WORK" th:selected="${timer.category}=='WORK'">WORK</option>
+                    <option value="STUDY" th:selected="${timer.category}=='STUDY'">STUDY</option>
+                    <option value="EXERCISE" th:selected="${timer.category}=='EXERCISE'">EXERCISE</option>
+                    <option value="REST" th:selected="${timer.category}=='REST'">REST</option>
+                    <option value="ETC" th:selected="${timer.category}=='ETC'">ETC</option>
+                  </select>
+                </div>
+              </div>
+              <div class="left_common">
+                <input type="text" value="title" id="title" class="title" th:value="${timer.title}"/>
+              </div>
+              <div class="left_common">
+                <textarea id="content" th:text="${timer.content}">content</textarea>
+              </div>
+            </div>
+            <div class="bot_right">
+              <div>
+                <button class="timerBtn" id="updateBtn" onclick="timerUpdate()">update</button>
+              </div>
+              <div>
+                <button class="timerBtn" id="deleteBtn" onclick="timerDelete()">delete</button>
+                <button class="timerBtn" id="exit" onclick="exit()">cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <th:block th:replace="layout/footer::footerFragment"></th:block>
+    </div>
+  </body>
+</html>

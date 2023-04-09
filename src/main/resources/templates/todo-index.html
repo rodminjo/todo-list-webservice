@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/todo-index.css" />
+    <title>Todolist</title>
+    <th:block th:replace="layout/config::configFragment"></th:block>
+    <script defer src="/js/todo-index.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <th:block th:replace="layout/header::headerFragment"></th:block>
+      <section class="dataSection">
+        <div class="date">
+          <h3>Select a date</h3>
+          <input class="dateInput" type="date" th:value="${date}" onchange="dateChange()" />
+        </div>
+        <div class="addTodo">
+          <button class="addTodoBtn" onclick="addNewTodo()">Add New Todo</button>
+        </div>
+        <div class="table">
+          <table>
+            <thead>
+              <tr class="thead-row">
+                <th>importance</th>
+                <th>title</th>
+                <th>checked</th>
+                <th>image</th>
+              </tr>
+            </thead>
+            <thead class="thead-col">
+              <th:block th:each="todo, i:${todos}">
+              <tr >
+                <th th:text="${i.index}+1"></th>
+              </tr>
+              </th:block>
+            </thead>
+            <tbody>
+            <td>★★★★★</td>
+            <td>타이틀</td>
+            <td><input type="checkbox" /></td>
+            <td>
+              <div class="todoImg">
+                <img src="#" alt="#" />
+              </div>
+            </td>
+            </tbody>
+
+            <th:block th:each="todo:${todos}">
+            <tbody>
+              <input type="hidden" th:value="${todo.id}" >
+              <td>
+                <select th:id="@{importance{id}(id=${todo.id})}" th:onchange="@{importanceChange({id})(id=${todo.id})}">
+                  <option value="1" th:selected="${todo.importance}=='1'">1</option>
+                  <option value="2" th:selected="${todo.importance}=='2'">2</option>
+                  <option value="3" th:selected="${todo.importance}=='3'">3</option>
+                  <option value="4" th:selected="${todo.importance}=='4'">4</option>
+                  <option value="5" th:selected="${todo.importance}=='5'">5</option>
+                </select>
+              </td>
+              <td><a th:href="@{/todo/update/{todoId}/(todoId=${todo.id})}" th:text="${todo.title}">title</a></td>
+              <td><input type="checkbox" th:checked="${todo.checked}" id="checked" th:id="@{checked{id}(id=${todo.id})}" th:onclick="@{checkedChange({id})(id=${todo.id})}"></td>
+              <td>
+                <div class="todoImg">
+                  <img src="https://www.flaticon.com/kr/free-icons/-" th:src="@{/display?file={fileName}(fileName=${todo.storedFileName})}" alt="#" class="img" />
+                </div>
+              </td>
+            </tbody>
+            </th:block>
+          </table>
+        </div>
+      </section>
+      <th:block th:replace="layout/footer::footerFragment"></th:block>
+    </div>
+  </body>
+</html>

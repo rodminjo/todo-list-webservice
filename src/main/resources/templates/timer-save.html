@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/timer-save.css" />
+    <title>Timer 측정</title>
+    <th:block th:replace="layout/config::configFragment"></th:block>
+    <script defer src="/js/timer-save-running.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <th:block th:replace="layout/header::headerFragment"></th:block>
+      <section>
+        <div class="timer-box">
+          <div class="timer js-timer">00:00:00</div>
+          <div class="timer-form_Btn">
+            <div class="timerBtn js-timer_startBtn">
+              <i class="fas fa-play"></i>
+            </div>
+            <div class="timerBtn js-timer_stopBtn">
+              <i class="fas fa-pause"></i>
+            </div>
+            <div class="timerBtn js-timer_saveBtn">
+              <i class="fas fa-stop"></i>
+            </div>
+            <div class="timerBtn js-timer_refreshBtn">
+              <i class="fas fa-refresh"></i>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="bottomSection">
+            <div class="bot_left">
+              <div class="left_common category">
+                <div>category :</div>
+                <div>
+                  <select id="select_category" class="selectCategory">
+                    <option value="work">work</option>
+                    <option value="study">study</option>
+                    <option value="exercise">exercise</option>
+                    <option value="rest">rest</option>
+                    <option value="etc">etc</option>
+                  </select>
+                </div>
+              </div>
+              <div class="left_common">
+                <input type="text" value="title" id="title" class="title" />
+              </div>
+              <div class="left_common">
+                <textarea id="content">content</textarea>
+              </div>
+            </div>
+            <div class="bot_right">
+              <button class="timerBtn" id="timerSaveBtn" onclick="saveButton()">저장</button>
+              <button class="timerBtn" id="exitBtn" onclick="exit()">종료</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <th:block th:replace="layout/footer::footerFragment"></th:block>
+    </div>
+
+  </body>
+</html>

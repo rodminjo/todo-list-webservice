@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/ranking-index.css" />
+    <title>Ranking</title>
+    <th:block th:replace="layout/config::configFragment"></th:block>
+    <script defer src="/js/ranking-index-medal.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <th:block th:replace="layout/header::headerFragment"></th:block>
+      <main class="rankingMain">
+        <section class="timerSection">
+          <div class="timer">
+            <div>
+              <p class="commonTimeAfter" th:text="${week}">2023-14</p>
+            </div>
+          </div>
+          <div class="btnWrapper">
+            <a th:href="'/ranking/'+${week}+'/0'" class="leftBtn"> &#60;</a>
+            <a th:href="'/ranking/'+${week}+'/1'" class="rightBtn">&#62;</a>
+          </div>
+        </section>
+        <section class="boardSection">
+          <div class="table">
+            <table>
+              <thead>
+                <tr class="thead-row">
+                  <th>Picture</th>
+                  <th>Name</th>
+                  <th>Total Time</th>
+                </tr>
+              </thead>
+              <thead class="thead-col">
+              <th:block th:each="ranking, i:${rankingList}">
+              <tr>
+                  <th th:class="'Ranking'+(${i.index}+1)" th:text="${i.index}+1">👑</th>
+                </tr>
+              </th:block>
+              </thead>
+              <tbody>
+              <td>이름</td>
+              <td>타이틀</td>
+              <td>....date</td>
+              </tbody>
+              <th:block th:each="ranking :${rankingList}">
+              <tbody>
+                <td><img class="img" th:src="${ranking.picture}"></td>
+                <td><a th:href="'/ranking/detail/'+${ranking.id}" th:text="${ranking.nickName}">name</a></td>
+                <td th:text="${ranking.convertTotalDoingTime}">total</td>
+              </tbody>
+              </th:block>
+            </table>
+          </div>
+        </section>
+        <section class="searchSection">
+          <form method="get" th:action="'/ranking/'+${week}">
+            <div class="inputWrap">
+              <input type="text" name="search" placeholder="사용자 검색"/> <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+          </form>
+        </section>
+      </main>
+      <th:block th:replace="layout/footer::footerFragment"></th:block>
+    </div>
+  </body>
+</html>
