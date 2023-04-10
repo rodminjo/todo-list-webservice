@@ -84,7 +84,7 @@ sliderLeftBtnDom.addEventListener('click', () => {
 
 // 정보 제출하기 위한 형식
 var main = {
-  init : function () {
+  init: function () {
     var _this = this;
     $('#btn-save').on('click', function () {
       _this.todoSave();
@@ -95,13 +95,12 @@ var main = {
     $('#btn-delete').on('click', function () {
       _this.todoDelete();
     });
-
   },
-  todoSave : function () {
+  todoSave: function () {
     var data = {
       todoDate: $('#todoDate').val(),
       title: $('#title').val(),
-      content: $('#content').val()
+      content: $('#content').val(),
     };
 
     var form = $('#form')[0];
@@ -109,9 +108,9 @@ var main = {
 
     var totalfiles = document.getElementById('files').files.length;
     for (var index = 0; index < totalfiles; index++) {
-      formData.append("file", document.getElementById('files').files[index]);
+      formData.append('file', document.getElementById('files').files[index]);
     }
-    formData.append('key', new Blob([JSON.stringify(data)], {type: "application/json"}));
+    formData.append('key', new Blob([JSON.stringify(data)], { type: 'application/json' }));
 
     $.ajax({
       type: 'POST',
@@ -119,22 +118,21 @@ var main = {
       processData: false,
       contentType: false,
       data: formData,
-
     })
-        .done(function () {
-          alert("글이 등록되었습니다.");
-          window.location.href = "/";
-        })
-        .fail(function (error) {
-          alert(JSON.stringify(error));
-        });
+      .done(function () {
+        alert('글이 등록되었습니다.');
+        window.location.href = '/todo';
+      })
+      .fail(function (error) {
+        alert(JSON.stringify(error));
+      });
   },
 
-  todoUpdate : function () {
+  todoUpdate: function () {
     var data = {
       todoDate: $('#todoDate').val(),
       title: $('#title').val(),
-      content: $('#content').val()
+      content: $('#content').val(),
     };
     var id = $('#id').val();
     var form = $('#form')[0];
@@ -142,49 +140,44 @@ var main = {
 
     var totalfiles = document.getElementById('files').files.length;
     for (var index = 0; index < totalfiles; index++) {
-      formData.append("file", document.getElementById('files').files[index]);
+      formData.append('file', document.getElementById('files').files[index]);
     }
-    formData.append('key', new Blob([JSON.stringify(data)], {type: "application/json"}));
+    formData.append('key', new Blob([JSON.stringify(data)], { type: 'application/json' }));
 
     $.ajax({
       type: 'POST',
-      url: '/api/v1/todo/'+id,
+      url: '/api/v1/todo/' + id,
       processData: false,
       contentType: false,
       data: formData,
-
     })
-        .done(function () {
-          alert("글이 수정되었습니다.");
-          window.location.href = "/";
-        })
-        .fail(function (error) {
-          alert(JSON.stringify(error));
-        });
+      .done(function () {
+        alert('글이 수정되었습니다.');
+        window.location.href = '/todo';
+      })
+      .fail(function (error) {
+        alert(JSON.stringify(error));
+      });
   },
 
-
-  todoDelete : function () {
+  todoDelete: function () {
     var todoId = $('#id').val();
-    var todoDate = $("#todoDate").val();
+    var todoDate = $('#todoDate').val();
 
     $.ajax({
-      type: "DELETE",
-      url: "/api/v1/todo/"+todoId,
-      dataType: "json",
-      contentType: "application/json; charset=utf-8",
+      type: 'DELETE',
+      url: '/api/v1/todo/' + todoId,
+      dataType: 'json',
+      contentType: 'application/json; charset=utf-8',
     })
-        .done(function () {
-          alert("글이 삭제되었습니다.");
-          window.location.href = "/todo/"+todoDate;
-        })
-        .fail(function (error) {
-          alert(JSON.stringify(error));
-        });
-  }
-
-}
-
+      .done(function () {
+        alert('글이 삭제되었습니다.');
+        window.location.href = '/todo/' + todoDate;
+      })
+      .fail(function (error) {
+        alert(JSON.stringify(error));
+      });
+  },
+};
 
 main.init();
-

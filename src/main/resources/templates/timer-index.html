@@ -13,7 +13,8 @@
   <body>
     <div class="wrapper">
       <th:block th:replace="layout/header::headerFragment"></th:block>
-      <section>
+      <section class="timerSection">
+      <h3>Timer</h3>
           <div id="time" class="time"></div>
           <div id="date" class="date"></div>
         <div>
@@ -21,7 +22,8 @@
             <input class="dateInput" type="date" th:value="${date}" onchange="dateChange()" />
             <button class="timerBtn" onclick="addNewTodo()">측정시작</button>
           </div>
-          <div class="table">
+          <div class="emptyTimer" th:if="${timers.isEmpty()}">타이머를 시작하세요</div>
+          <div class="table" th:unless="${timers.isEmpty()}">
             <table>
               <thead>
                 <tr class="thead-row">
@@ -44,7 +46,7 @@
               </tbody>
               <th:block th:each="timer:${timers}">
                 <tbody>
-                <input type="hidden" th:value="${timer.id}" th:text="${timer.doingTime}">
+                <input type="hidden" th:value="${timer.id}">
                 <td th:text="${timer.category}"></td>
                 <td><a th:href="@{/timer/update/{timerId}(timerId=${timer.id})}" th:text="${timer.title}">title</a></td>
                 <td th:text="${timer.convertingDoingTime}"></td>

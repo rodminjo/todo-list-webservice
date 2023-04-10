@@ -1,10 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;600&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet:wght@300;400;700&family=Noto+Sans+KR:wght@300;500;700&display=swap');
 :root {
-  --font-highLight: "Oswald", sans-serif;
+  --font-highLight: 'Oswald', sans-serif;
 }
 
-.wrapper {
+body {
   width: 100%;
   min-height: 100%;
   display: flex;
@@ -69,21 +70,39 @@ body {
   width: 100vw;
   height: 100vh;
   min-height: 100%;
-  background: url(https://images.unsplash.com/photo-1511992243105-2992b3fd0410?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)
-  no-repeat;
+  background: url(https://images.unsplash.com/photo-1442033025416-c6a7da752d71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2177&q=80)
+    no-repeat;
+  /* background: rgb(35, 64, 149);
+  background: linear-gradient(
+    90deg,
+    rgba(35, 64, 149, 1) 0%,
+    rgba(77, 209, 255, 0.829656862745098) 100%
+  ); */
+
   background-position: center;
   background-size: cover;
-  backdrop-filter: blur(2px);
+  /* backdrop-filter: bluserProfileur(2px); */
   margin: 0;
   padding: 0;
 }
 
+section {
+  font-family: 'Hahmlet', serif;
+}
+
+input {
+  font-family: inherit;
+}
+
 .myPage {
+  gap: 1rem;
   border-radius: 1px;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   min-width: 600px;
-  height: 30vh;
+  height: 600px;
   padding: 3rem;
   background: rgba(85, 81, 81, 0.4);
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.5);
@@ -94,10 +113,13 @@ body {
 .userProfile img {
   width: 200px;
   border-radius: 100%;
-  margin-right: 5rem;
 }
 
 .user {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  align-items: center;
   width: 30vw;
 }
 
@@ -111,7 +133,7 @@ body {
 }
 
 .btn-nickName-update {
-  padding: 0.4rem 0;
+  padding: 0.4rem 0.8rem;
   margin-bottom: 10px;
   border-radius: 4px;
   border-style: none;
@@ -124,25 +146,28 @@ body {
 }
 
 .userEmail {
-  padding: 0.4rem 0;
-  margin-bottom: 10px;
-  border-radius: 4px;
-  background: grey;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
   color: white;
+  background-color: rgba(0, 0, 0, 0.1);
+
   text-align: center;
 }
 
 .idCheck {
-  padding: 0.4rem 0;
   color: white;
   text-align: center;
 }
 
 .userInfo {
+  padding: 0 1rem;
+  width: 100%;
   height: 100px;
-  flex: 2;
+  justify-content: space-between;
+  display: flex;
   border-radius: 4px;
-  background: white;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: white;
 }
 
 .handleUserInfo {
@@ -182,4 +207,24 @@ body {
 
 .footer h2 {
   font-size: 1rem;
+}
+
+.userNickNameInput {
+  display: flex;
+  width: 90%;
+  gap: 1rem;
+}
+
+.userinfoWrapper {
+  gap: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.editSection {
+  width: 100%;
+  text-align: end;
 }

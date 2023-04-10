@@ -14,19 +14,23 @@
     <div class="wrapper">
       <th:block th:replace="layout/header::headerFragment"></th:block>
       <main class="rankingMain">
-        <section class="timerSection">
-          <div class="timer">
+    
+        <section class="rankingSection">
+          <h3>Ranking</h3>
+          <div class="ranking">
             <div>
               <p class="commonTimeAfter" th:text="${week}">2023-14</p>
+              <div class="btnWrapper">
+                <a th:href="'/ranking/'+${week}+'/0'" class="leftBtn"> &#60;</a>
+                <a th:href="'/ranking/'+${week}+'/1'" class="rightBtn">&#62;</a>
+              </div>
             </div>
           </div>
-          <div class="btnWrapper">
-            <a th:href="'/ranking/'+${week}+'/0'" class="leftBtn"> &#60;</a>
-            <a th:href="'/ranking/'+${week}+'/1'" class="rightBtn">&#62;</a>
-          </div>
+     
         </section>
         <section class="boardSection">
-          <div class="table">
+          <div class="emptyRanking" th:if="${rankingList.isEmpty()}">현재 랭킹이 없습니다</div>
+          <div class="table" th:unless="${rankingList.isEmpty()}">
             <table>
               <thead>
                 <tr class="thead-row">

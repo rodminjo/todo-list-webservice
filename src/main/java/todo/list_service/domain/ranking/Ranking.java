@@ -19,6 +19,7 @@ import java.util.List;
 public class Ranking extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "RANKING_ID")
     private Long id;
 
     @ManyToOne(targetEntity = User.class)

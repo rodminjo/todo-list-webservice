@@ -30,7 +30,7 @@ public class Posts extends BaseTimeEntity {
     @JoinColumn(name = "USER_ID")
     private User user;
 
-    @Column(length = 500, nullable = false)
+    @Column(nullable = false)
     private String title;
 
     @Column(columnDefinition = "TEXT", nullable = false)

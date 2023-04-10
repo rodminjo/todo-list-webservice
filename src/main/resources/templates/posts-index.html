@@ -12,8 +12,10 @@
 </head>
 <body>
 <div class="wrapper">
+
   <th:block th:replace="layout/header::headerFragment"></th:block>
   <section class="freeBoard">
+    <h3>Free Board</h3>
     <div class="freeBoard-top">
       <select class="freeBoard-top_option" id="sort" onchange="sort()">
         <option value="1" th:selected="${select}==1">최신순</option>
@@ -23,7 +25,8 @@
       <a href="/posts/save">게시글 작성</a>
     </div>
     <main class="freeBoard-main">
-      <div class="table">
+      <div class="emptyPost" th:if="${posts.isEmpty()}">게시글을 작성하세요</div>
+      <div class="table" th:unless="${posts.isEmpty()}">
         <table>
           <thead>
           <tr class="thead-row">

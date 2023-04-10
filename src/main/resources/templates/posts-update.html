@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -30,13 +29,30 @@
             />
             <span th:text="${posts.nickName}">작성자 네임</span>
             <span class="wirteInfo">
-              <div th:text="'조회 '+${posts.viewCount}+'  댓글 '+${posts.replyCount}">조회 00 댓글 00</div>
-              <div th:text="${#strings.substring(posts.createdDate,0,10)} + '  ' + ${#strings.substring(posts.createdDate,11,16)}">2022-01-01 20:00</div>
+              <div th:text="'조회 '+${posts.viewCount}+'  댓글 '+${posts.replyCount}">
+                조회 00 댓글 00
+              </div>
+              <div
+                th:text="${#strings.substring(posts.createdDate,0,10)} + '  ' + ${#strings.substring(posts.createdDate,11,16)}"
+              >
+                2022-01-01 20:00
+              </div>
             </span>
           </div>
           <th:block th:if="${posts.userId.equals(userId)}">
-            <input class="boardTitle" type="text" id="boardTitle" value="title" th:value="${posts.title}" />
-            <textarea class="boardContent" id="boardContent" th:text="${posts.content}" th:value="${posts.content}"></textarea>
+            <input
+              class="boardTitle"
+              type="text"
+              id="boardTitle"
+              value="title"
+              th:value="${posts.title}"
+            />
+            <textarea
+              class="boardContent"
+              id="boardContent"
+              th:text="${posts.content}"
+              th:value="${posts.content}"
+            ></textarea>
           </th:block>
           <th:block th:unless="${posts.userId.equals(userId)}">
             <div class="boardTitle" th:text="${posts.title}">title</div>
@@ -48,31 +64,74 @@
             <a class="photoToggleBtn" href="#">photo</a
             ><a class="commnetToggleBtn" href="#">commnet</a>
           </div>
-          <div class="photoWrapper">
-            <th:block th:each="file : ${posts.storedFileNames}">
-              <img th:src="'/display?file='+${file}">
-            </th:block>
+
+          <div class="photo">
+            <div class="updatePhoto">
+              <th:block th:if="${posts.userId.equals(userId)}">
+                <form enctype="multipart/form-data" id="form">
+                  <input type="file" multiple accept="image/*" class="multipleImage" id="files" />
+                </form>
+              </th:block>
+            </div>
+            <div class="photoWrapper">
+              <th:block th:each="file : ${posts.storedFileNames}">
+                <img th:src="'/display?file='+${file}" />
+              </th:block>
+            </div>
           </div>
+
           <div class="commentWrapper active">
             <div class="comment">
               <th:block th:each="reply, i:${posts.replyDtos}">
                 <th:block th:if="${reply.userId.equals(userId)}">
                   <div class="commentUser">
-                    <div class="profileWrapper">
-                      <span th:if="${reply.replyLevel} > 0"><i class="fa-solid fa-turn-down-right reply"></i></span>
-                      <img
-                              src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-                              th:src="${reply.picture}"
-                              alt="user"
-                      />
+                    <div th:if="${reply.replyLevel} > 0">ㄴ</div>
+                    <div class="commnetRight">
+                      <div class="profileWrapper">
+                        <div class="profileLeft">
+                          <img
+                            src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                            th:src="${reply.picture}"
+                            alt="user"
+                          />
+                          <div class="userName" th:text="${reply.nickName}">익명</div>
+                        </div>
+
+                        <div class="iconDateWrappter">
+                          <div class="commentIcons">
+                            <span
+                              class="btn-replyUpdate"
+                              th:onclick="'replyPostsUpdate('+${i.index}+')'"
+                              ><i class="fa-solid fa-edit"></i
+                            ></span>
+                            <span
+                              class="btn-replyDelete"
+                              th:onclick="'replyPostsDelete('+${i.index}+')'"
+                              ><i class="fa-solid fa-xmark"></i
+                            ></span>
+                            <span
+                              class="btn-replyToReply"
+                              th:onclick="'replyToReply('+${i.index}+')'"
+                              ><i class="fa-solid fa-reply"></i
+                            ></span>
+                          </div>
+
+                          <div class="commentDate">
+                            <span
+                              th:text="${#strings.substring(reply.createdTime,0,10)}+'  '+${#strings.substring(reply.createdTime,11,16)}"
+                              >2022-01-01 00:00</span
+                            >
+                          </div>
+                        </div>
+                      </div>
+
+                      <span
+                        th:if="${reply.replyLevel} > 1"
+                        th:text="'@'+${reply.replyParent}"
+                      ></span>
+
+                      <input th:id="'update'+${i.index}" th:value="${reply.content}" />
                     </div>
-                    <div class="userName" th:text="${reply.nickName}">익명</div>
-                    <span th:if="${reply.replyLevel} > 1" th:text="'@'+${reply.replyParent}"></span>
-                    <textarea th:id="'update'+${i.index}" th:text="${reply.content}"></textarea>
-                    <span th:text="${#strings.substring(reply.createdTime,0,10)}+'  '+${#strings.substring(reply.createdTime,11,16)}">2022-01-01 00:00</span>
-                    <span class="btn-replyUpdate" th:onclick="'replyPostsUpdate('+${i.index}+')'"><i class="fa-solid fa-edit"></i></span>
-                    <span class="btn-replyDelete" th:onclick="'replyPostsDelete('+${i.index}+')'"><i class="fa-solid fa-xmark"></i></span>
-                    <span class="btn-replyToReply" th:onclick="'replyToReply('+${i.index}+')'"><i class="fa-solid fa-reply"></i></span>
                   </div>
                 </th:block>
 
@@ -82,43 +141,58 @@
                       <span><i class="fa-solid fa-l"></i></span>
                     </th:block>
                     <img
-                            src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-                            th:src="${reply.picture}"
-                            alt="user"
+                      src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                      th:src="${reply.picture}"
+                      alt="user"
                     />
                     <div class="userName" th:text="${reply.nickName}">익명</div>
                     <span th:if="${reply.replyLevel} > 1" th:text="'@'+${reply.replyParent}"></span>
-                    <span th:id="'replyContent'+${i.index}" th:text="${reply.content}">우왕개쩌네요</span>
-                    <span th:text="${#strings.substring(reply.createdTime,0,10)}+'  '+${#strings.substring(reply.createdTime,11,16)}">2022-01-01 00:00</span>
-                    <span class="btn-replyToReply" th:onclick="'replyToReply('+${i.index}+')'"><i class="fa-solid fa-reply"></i></span>
+                    <span th:id="'replyContent'+${i.index}" th:text="${reply.content}"
+                      >우왕개쩌네요</span
+                    >
+                    <span
+                      th:text="${#strings.substring(reply.createdTime,0,10)}+'  '+${#strings.substring(reply.createdTime,11,16)}"
+                      >2022-01-01 00:00</span
+                    >
+                    <span class="btn-replyToReply" th:onclick="'replyToReply('+${i.index}+')'"
+                      ><i class="fa-solid fa-reply"></i
+                    ></span>
                   </div>
                 </th:block>
               </th:block>
-
             </div>
           </div>
-          <th:block th:if="${posts.userId.equals(userId)}">
-          <form enctype="multipart/form-data" id="form">
-            <input type="file" multiple accept="image/*" class="multipleImage" id="files"/>
+
+          <form class="postComment">
+            <div class="replyComment" style="display: none">
+              <input type="hidden" id="replyParentIndex" />
+              <div id="replyShowName">익명</div>
+              <!-- <span id="replyShowContent">우왕개쩌네요</span> -->
+              <span id="btn-replyToReplyCancel" onclick="replyToReplyCancel()"
+                ><i class="fa-solid fa-xmark"></i
+              ></span>
+            </div>
+            <input type="text" id="replyContent" placeholder="댓글 달기" />
+            <button id="btn-replySave" onclick="replyPostsSave()">
+              <i class="fa-regular fa-comment"></i>
+            </button>
           </form>
-          </th:block>
-          <div class="replyComment" style="display: none">
-            <input type="hidden" id="replyParentIndex">
-            <div id="replyShowName">익명</div>
-            <span id="replyShowContent">우왕개쩌네요</span>
-            <span id="btn-replyToReplyCancel" onclick="replyToReplyCancel()"><i class="fa-solid fa-xmark"></i></span>
-          </div>
-          <div class="postComment">
-            <input type="text" id="replyContent" placeholder="댓글 달기"/>
-            <button id="btn-replySave" onclick="replyPostsSave()"><i class="fa-regular fa-comment"></i></button>
-          </div>
 
           <div class="handleBtn">
             <th:block th:if="${posts.userId.equals(userId)}">
-            <button id="btn-update">UPDATE</button>
-            <button id="btn-delete">DELETE</button>
+              <button id="btn-update">
+                <span></span>
+                UPDATE
+              </button>
+              <button id="btn-delete">
+                <span></span>
+                DELETE
+              </button>
             </th:block>
-            <button onclick="location.href='/posts'">CANCEL</button>
+            <button onclick="location.href='/posts'">
+              <span></span>
+              CANCEL
+            </button>
           </div>
         </section>
       </main>

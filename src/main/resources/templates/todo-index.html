@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -13,15 +12,21 @@
   <body>
     <div class="wrapper">
       <th:block th:replace="layout/header::headerFragment"></th:block>
-      <section class="dataSection">
+      <section class="dateSection">
         <div class="date">
-          <h3>Select a date</h3>
-          <input class="dateInput" type="date" th:value="${date}" onchange="dateChange()" />
+          <h3>todo list</h3>
+
+          <div class="date-input-btn">
+            <input class="dateInput" type="date" th:value="${date}" onchange="dateChange()" />
+
+            <div class="addTodo">
+              <button class="addTodoBtn" onclick="addNewTodo()">Add New Todo</button>
+            </div>
+          </div>
         </div>
-        <div class="addTodo">
-          <button class="addTodoBtn" onclick="addNewTodo()">Add New Todo</button>
-        </div>
-        <div class="table">
+
+        <div class="emptyTodo" th:if="${todos.isEmpty()}">투두 리스트를 작성하세요</div>
+        <div class="table" th:unless="${todos.isEmpty()}">
           <table>
             <thead>
               <tr class="thead-row">

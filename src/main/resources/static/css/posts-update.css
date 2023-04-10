@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;600&display=swap');
 
 :root {
-  --font-highLight: "Oswald", sans-serif;
+  --font-highLight: 'Oswald', sans-serif;
   --bgColor: rgba(255, 255, 255, 0.8);
 }
 
@@ -73,8 +73,7 @@ body {
   width: 100vw;
   height: 100vh;
   min-height: 100%;
-  background: url(https://images.unsplash.com/photo-1511992243105-2992b3fd0410?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)
-  no-repeat;
+  background: rgb(177, 180, 147);
   background-position: center;
   background-size: cover;
   backdrop-filter: blur(2px);
@@ -111,9 +110,11 @@ body {
   display: flex;
   justify-content: space-between;
   gap: 3rem;
+
 }
 
 .left {
+  min-width: 600px;
   display: flex;
   flex: 4;
   flex-direction: column;
@@ -124,7 +125,9 @@ body {
 .right {
   padding: 10px;
   flex: 2;
-  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .user {
@@ -140,9 +143,8 @@ body {
 }
 
 .wirteInfo {
-  font-size: 5px;
+  font-size: 8px;
   position: relative;
-
   text-align: left;
 }
 
@@ -196,7 +198,7 @@ body {
 }
 
 .comment {
-  width: 100%;
+  min-width: 400px;
   overflow-y: scroll;
   height: 40vh;
   border: 1px solid var(--bgColor);
@@ -207,11 +209,12 @@ body {
 }
 
 .commentUser {
+  min-width: 320px;
   align-items: center;
   gap: 1rem;
   padding: 8px 12px;
   background-color: var(--bgColor);
-  /*display: flex;*/
+  display: flex;
   border-radius: 4px;
 }
 
@@ -221,27 +224,31 @@ body {
 }
 
 .postComment {
-  margin-top: 20px;
+  margin-top: 15px;
   display: flex;
   height: 23px;
-  width: 100%;
+  width: 95%;
   justify-content: center;
   align-items: center;
-  gap: 4px;
 }
 
 .postComment input {
   padding: 10px;
   width: 80%;
   height: 40px;
+  border: none;
+  outline: none;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 .postComment button {
   border: none;
   background-color: var(--bgColor);
-  padding: 12px 16px;
-  border-radius: 8px;
+  padding: 11px 16px;
   font-size: 1rem;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 .postComment button:hover {
@@ -251,12 +258,16 @@ body {
 }
 
 .replyComment {
+  width: 150px;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-top: 5px;
+  text-overflow: ellipsis;
   align-items: center;
-  gap: 1rem;
   padding: 8px 12px;
-  background-color: var(--bgColor);
   display: flex;
   border-radius: 4px;
+  gap: 5px;
 }
 
 #replyShowName {
@@ -271,16 +282,23 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 100%;
+  width: 95%;
 }
 
 .handleBtn button {
-  width: 95%;
+  width: 90%;
   height: 30px;
+  border: none;
   text-align: center;
   line-height: 30px;
-  background-color: var(--bgColor);
   border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.handleBtn button:hover {
+  cursor: pointer;
+  background-color: black;
+  color: white;
 }
 
 .handleBtn a:hover {
@@ -304,9 +322,9 @@ body {
   background-color: white;
 }
 .photoWrapper {
+  display: flex;
+  position: relative;
   padding: 0 1rem;
-  display: none;
-  overflow-y: scroll;
   height: 40vh;
   flex-direction: column;
   align-items: center;
@@ -320,10 +338,62 @@ body {
 .commentWrapper {
   display: none;
 }
+
+.photo {
+  margin: auto;
+  display: none;
+  width: 400px;
+  flex-direction: column;
+  overflow-y: scroll;
+  height: 80%;
+}
+
 .active {
   display: flex;
 }
 
 .fa-solid:hover {
   cursor: pointer;
+}
+
+.profileWrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.commnetRight {
+  gap: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.profileLeft {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.iconDateWrappter {
+  justify-content: flex-end;
+}
+
+.commentIcons {
+  display: flex;
+  justify-content: end;
+  gap: 5px;
+}
+
+.commentDate {
+  font-size: 12px;
+}
+
+.imageFileUpdate {
+  width: 100%;
+  height: 30px;
+}
+
+.updatePhoto {
+  align-self: flex-start;
 }

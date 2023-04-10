@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;600&display=swap');
 
 :root {
-  --font-highLight: "Oswald", sans-serif;
+  --font-highLight: 'Oswald', sans-serif;
 }
 
 .wrapper {
@@ -72,11 +72,9 @@ body {
   width: 100vw;
   height: 100vh;
   min-height: 100%;
-  background: url(https://images.unsplash.com/photo-1511992243105-2992b3fd0410?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)
-    no-repeat;
+  background: rgb(177, 180, 147);
   background-position: center;
   background-size: cover;
-  backdrop-filter: blur(2px);
   margin: 0;
   padding: 0;
 }
@@ -111,7 +109,6 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 125px;
 }
 
 .timer {
@@ -133,7 +130,7 @@ ul {
 
 .timerBtn {
   height: 30px;
-  width: 100px;
+  width: 200px;
   border-radius: 25px;
   margin-left: 10px;
   display: flex;
@@ -182,7 +179,7 @@ ul {
   position: absolute;
   right: -25px;
   top: -5px;
-  content: ":";
+  content: ':';
   color: gray;
 }
 
@@ -245,14 +242,18 @@ ul {
   width: 200px;
   text-align: center;
 }
+.bot_right {
+  width: 100%;
+}
 
 .left_common {
+  padding: 1rem 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.5);
   margin: 1rem 0;
-  background-color: #3f94b9;
   width: 100%;
   height: 40px;
 }
@@ -264,7 +265,7 @@ ul {
   font-weight: bold;
 }
 
-.select_ategory {
+/* .select_ategory {
   text-align: center;
   width: 6rem;
-}
+} */

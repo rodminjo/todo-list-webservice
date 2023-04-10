@@ -43,8 +43,9 @@ public class TodoIndexController {
     }
 
     @GetMapping("/todo/save/{date}")
-    public String todoSave(@PathVariable String date, Model model){
+    public String todoSave(@PathVariable String date,@LoginUser SessionUser user, Model model){
         if (date != null){
+            model.addAttribute("userName", user.getName());
             model.addAttribute("date", date);
         }
         return "todo-save";
