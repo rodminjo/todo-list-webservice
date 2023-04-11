@@ -24,7 +24,8 @@ a {
 }
 
 .nav {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: #222831;
+
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
   padding: 1rem 3rem;
@@ -73,10 +74,7 @@ body {
   width: 100vw;
   height: 100vh;
   min-height: 100%;
-  background: rgb(177, 180, 147);
-  background-position: center;
-  background-size: cover;
-  backdrop-filter: blur(2px);
+  background-color: #eeeeee;
   margin: 0;
   padding: 0;
 }
@@ -87,7 +85,8 @@ body {
   color: white;
   position: absolute;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: #222831;
+
   backdrop-filter: blur(40px);
   width: 100%;
   height: 85px;
@@ -109,6 +108,9 @@ body {
 }
 
 .leftSection {
+  background-color: #222831;
+  border-radius: 20px;
+  padding: 10px;
   flex: 4;
   display: flex;
   flex-direction: column;
@@ -116,6 +118,8 @@ body {
 }
 
 .rightSection {
+  border-radius: 20px;
+  background-color: #222831;
   flex: 2;
   display: flex;
   flex-direction: column;
@@ -138,7 +142,7 @@ body {
   background-color: var(--bgColor);
 }
 .inputRight {
-  border: 1px solid black;
+  border: 1px solid rgba(255, 255, 255, 0.8);
   padding: 1rem;
   display: flex;
   align-items: center;
@@ -147,7 +151,7 @@ body {
 }
 
 .inputRight input[type='file'] {
-  color: black;
+  color: white;
 }
 
 .slider {
@@ -174,7 +178,7 @@ body {
 
 .slider i:hover {
   cursor: pointer;
-  color: black;
+  color: white;
 }
 
 .hidden {
@@ -186,7 +190,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: black;
+  color: white;
 }
 
 .right {

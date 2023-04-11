@@ -24,7 +24,8 @@ a {
 }
 
 .nav {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: #222831;
+
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
   padding: 1rem 3rem;
@@ -72,11 +73,7 @@ body {
   position: relative;
   width: 100vw;
   height: 100vh;
-  min-height: 100%;
-  background: rgb(177, 180, 147);
-  background-position: center;
-  background-size: cover;
-  backdrop-filter: blur(2px);
+  background-color: #eeeeee;
   margin: 0;
   padding: 0;
 }
@@ -87,7 +84,8 @@ body {
   color: white;
   position: absolute;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: #222831;
+
   backdrop-filter: blur(40px);
   width: 100%;
   height: 85px;
@@ -212,6 +210,9 @@ tbody tr:nth-child(2n-1):hover {
 }
 
 .left {
+  background-color: #222831;
+  border-radius: 20px;
+  padding: 20px;
   border: 1px solid var(--bgColor);
   display: flex;
   flex-direction: column;
@@ -219,6 +220,9 @@ tbody tr:nth-child(2n-1):hover {
 }
 
 .right {
+  background-color: #222831;
+  border-radius: 20px;
+  padding: 20px;
   border: 1px solid var(--bgColor);
   padding: 4rem 10px;
   flex: 1;

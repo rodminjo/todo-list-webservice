@@ -24,7 +24,8 @@ a {
 }
 
 .nav {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: #222831;
+
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
   padding: 1rem 3rem;
@@ -70,14 +71,7 @@ body {
   width: 100vw;
   height: 100vh;
   min-height: 100%;
-  background: url(https://images.unsplash.com/photo-1442033025416-c6a7da752d71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2177&q=80)
-    no-repeat;
-  /* background: rgb(35, 64, 149);
-  background: linear-gradient(
-    90deg,
-    rgba(35, 64, 149, 1) 0%,
-    rgba(77, 209, 255, 0.829656862745098) 100%
-  ); */
+  background-color: #eeeeee;
 
   background-position: center;
   background-size: cover;
@@ -199,7 +193,8 @@ input {
   color: white;
   position: absolute;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: #222831;
+
   backdrop-filter: blur(40px);
   width: 100%;
   height: 85px;

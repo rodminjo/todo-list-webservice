@@ -51,7 +51,7 @@ h3 {
   font-family: var(--font-highLight);
   font-weight: 600;
   font-size: 2rem;
-  color: black;
+  color: #222831;
   padding-bottom: 10px;
 
   border-bottom: 3px solid black;
@@ -63,15 +63,14 @@ body {
   position: relative;
   width: 100vw;
   height: 100vh;
-  background: rgb(177, 180, 147);
-  background-position: center;
-  background-size: cover;
+  background-color: #eeeeee;
   margin: 0;
   padding: 0;
 }
 
 .nav {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: #222831;
+
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
   padding: 1rem 3rem;
@@ -219,7 +218,8 @@ tbody tr:nth-child(2n-1):hover {
   color: white;
   position: absolute;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: #222831;
+
   backdrop-filter: blur(40px);
   width: 100%;
   height: 85px;
@@ -243,7 +243,7 @@ tbody tr:nth-child(2n-1):hover {
 .emptyTodo {
   line-height: 30vh;
   height: 50vh;
-  color: white;
+  color: #222831;
   font-size: 2rem;
   text-align: center;
 }
