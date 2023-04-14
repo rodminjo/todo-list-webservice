@@ -82,10 +82,10 @@ function replyPostsSave() {
     };
 
     var id = posts.id;
-
     $.ajax({
       type: 'POST',
       url: '/api/v1/posts/'+id+'/reply',
+      async : false,
       dataType: "json",
       contentType: "application/json; charset=utf-8",
       data: JSON.stringify(data)
@@ -110,6 +110,7 @@ function replyPostsSave() {
     $.ajax({
       type: 'POST',
       url: '/api/v1/posts/'+id+'/reply',
+      async: false,
       dataType: "json",
       contentType: "application/json; charset=utf-8",
       data: JSON.stringify(data)

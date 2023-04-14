@@ -66,11 +66,11 @@
                   <option value="5" th:selected="${todo.importance}=='5'">5</option>
                 </select>
               </td>
-              <td><a th:href="@{/todo/update/{todoId}/(todoId=${todo.id})}" th:text="${todo.title}">title</a></td>
+              <td ><a th:href="@{/todo/update/{todoId}/(todoId=${todo.id})}" th:text="${todo.title}">title</a></td>
               <td><input type="checkbox" th:checked="${todo.checked}" id="checked" th:id="@{checked{id}(id=${todo.id})}" th:onclick="@{checkedChange({id})(id=${todo.id})}"></td>
               <td>
                 <div class="todoImg">
-                  <img src="https://www.flaticon.com/kr/free-icons/-" th:src="@{/display?file={fileName}(fileName=${todo.storedFileName})}" alt="#" class="img" />
+                  <img src="https://www.flaticon.com/kr/free-icons/-" th:if="${todo.storedFileName}" th:src="@{/display?file={fileName}(fileName=${todo.storedFileName})}" alt="#" class="img" />
                 </div>
               </td>
             </tbody>

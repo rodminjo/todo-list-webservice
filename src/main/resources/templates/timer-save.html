@@ -33,24 +33,15 @@
         <div>
           <div class="bottomSection">
             <div class="bot_left">
-              <div class="left_common category">
-                <div>category :</div>
-                <div>
-                  <select id="select_category" class="selectCategory">
+              <select class="left_common category" id="select_category">
                     <option value="work">work</option>
                     <option value="study">study</option>
                     <option value="exercise">exercise</option>
                     <option value="rest">rest</option>
                     <option value="etc">etc</option>
-                  </select>
-                </div>
-              </div>
-              <div class="left_common">
-                <input type="text" value="title" id="title" class="title" />
-              </div>
-              <div class="left_common">
-                <textarea id="content">content</textarea>
-              </div>
+              </select>
+                <input type="text" placeholder="제목을 입력해주세요" id="title" class="left_common title" />
+                <textarea class="left_common textbox" id="content" placeholder="내용을 입력해주세요"></textarea>
             </div>
             <div class="bot_right">
               <button class="timerBtn" id="timerSaveBtn" onclick="saveButton()">저장</button>

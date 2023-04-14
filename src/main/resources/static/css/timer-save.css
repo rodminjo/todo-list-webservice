@@ -94,6 +94,7 @@ section {
   padding: 20px;
   border-radius: 20px;
   background-color: #222831;
+  width: 40%;
 }
 .footer {
   display: flex;
@@ -108,6 +109,7 @@ ul {
   list-style: none;
   padding: 0;
 }
+
 
 .timer-box {
   display: flex;
@@ -246,7 +248,7 @@ ul {
 }
 
 .bot_left {
-  width: 200px;
+  width: 100%;
   text-align: center;
 }
 .bot_right {
@@ -254,7 +256,7 @@ ul {
 }
 
 .left_common {
-  padding: 1rem 2rem;
+  padding: 0.5rem 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -266,22 +268,34 @@ ul {
 }
 
 .category {
-  color: #eeeeee;
+  padding: 0;
+  color: white;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  text-align-last: center;
   font-weight: bold;
+  height: 25px;
 }
 
-/* .select_ategory {
-  text-align: center;
-  width: 6rem;
-} */
+.title{
+  color: white;
+}
+
+.textbox{
+  color: white;
+  width: 100%;
+  height: 70px;
+
+}
+
 
 #timerSaveBtn {
+  padding: 0.6rem 1rem;
   color: black;
 }
 
 #exitBtn {
+  padding: 0.6rem 1rem;
   color: black;
 }

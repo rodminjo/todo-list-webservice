@@ -129,17 +129,19 @@ body {
 
 .boardTitle {
   width: 100%;
-  height: 30px;
+  height: 40px;
   background-color: var(--bgColor);
-  text-align: center;
   font-weight: 400;
   border-radius: 4px;
+  font-size: 18px;
+  padding: 0 2rem;
 }
 .boardContent {
   padding: 1rem 2rem;
   width: 100%;
-  height: 60vh;
+  height: 55vh;
   background-color: var(--bgColor);
+  font-size: 18px;
 }
 .inputRight {
   border: 1px solid rgba(255, 255, 255, 0.8);

@@ -23,7 +23,6 @@ commnetToggleBtn.addEventListener('click', () => {
 function init() {
   photoWrapperDom.innerHTML = '';
 }
-
 multipleImageDom.addEventListener('change', (e) => {
   init();
 

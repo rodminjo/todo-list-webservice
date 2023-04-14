@@ -19,7 +19,7 @@ public class SecurityConfig {
                 .csrf().disable().headers().frameOptions().disable()// h2 콘솔창에 보이도록 설정
                 .and()
                     .authorizeRequests() // URL별 권한 관리 시작
-                    .antMatchers("/","/main","/jquery/**","/assets/**","/css/**","/images/**","/js/**","/h2-console/**","/login").permitAll() // 인덱스나 css조회, 이미지 조회 등 url는 전체 열람
+                    .antMatchers("/","/main","/jquery/**","/assets/**","/css/**","/images/**","/js/**","/h2-console/**","/login","/display").permitAll() // 인덱스나 css조회, 이미지 조회 등 url는 전체 열람
                     .antMatchers("/posts","/ranking/**").permitAll()   // posts, ranking 게시판은 모든 사용자가 볼 수 있음
                     .antMatchers("/api/v1/**").hasAnyRole(Role.USER.name(),Role.ADMIN.name()) //api/vi ... 글 등록 등은 "USER"(=Role.USER.name()), ADMIN만 권한줌
                     .anyRequest().authenticated()

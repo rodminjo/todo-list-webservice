@@ -26,7 +26,7 @@ public class MyPageController {
         return "notAvailable";
     }
 
-    @PostMapping("/api/v1/mypage/change-nickname")
+    @PostMapping("/api/v1/mypage/nickname/update")
     public String changeNickName(@RequestBody MypageIdCheckRequestDto requestDto, @LoginUser SessionUser user){
         Boolean checkResult = userService.checkedId(requestDto);
 

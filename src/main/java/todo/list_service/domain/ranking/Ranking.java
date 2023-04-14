@@ -26,7 +26,7 @@ public class Ranking extends BaseTimeEntity {
     @JoinColumn(name = "USER_ID", nullable = false)
     private User user;
 
-    @OneToMany(mappedBy = "ranking", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "ranking")
     private List<Timer> timer = new ArrayList<>();
 
     @OneToMany(mappedBy = "ranking")

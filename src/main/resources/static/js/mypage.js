@@ -32,7 +32,7 @@ function idChange() {
 
   $.ajax({
     type: 'POST',
-    url: '/api/v1/mypage/change-nickname',
+    url: '/api/v1/mypage/nickname/update',
     dataType: 'text',
     contentType: 'application/json; charset=utf-8',
     data: JSON.stringify(data),

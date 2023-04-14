@@ -193,13 +193,13 @@ table {
 
 .thead-row {
   position: absolute;
-  margin-left: 9rem;
+  margin-left: 12rem;
   z-index: 999;
 }
 
 tbody {
   display: block;
-  margin-left: 9rem;
+  margin-left: 12rem;
 }
 
 table :nth-child(2) {
@@ -207,7 +207,7 @@ table :nth-child(2) {
 }
 th,
 td {
-  min-width: 9rem;
+  min-width: 12rem;
   height: 3rem;
   box-sizing: border-box;
 }

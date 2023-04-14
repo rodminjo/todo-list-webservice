@@ -27,29 +27,20 @@
         <div>
           <div class="bottomSection">
             <div class="bot_left">
-              <div class="left_common category">
-                <div>category :</div>
-                <div>
                   <input type="hidden" th:value="${timer.id}" id="timerId">
-                  <select id="select_category" class="selectCategory">
+                  <select id="select_category" class="left_common category">
                     <option value="WORK" th:selected="${timer.category}=='WORK'">WORK</option>
                     <option value="STUDY" th:selected="${timer.category}=='STUDY'">STUDY</option>
                     <option value="EXERCISE" th:selected="${timer.category}=='EXERCISE'">EXERCISE</option>
                     <option value="REST" th:selected="${timer.category}=='REST'">REST</option>
                     <option value="ETC" th:selected="${timer.category}=='ETC'">ETC</option>
                   </select>
-                </div>
-              </div>
-              <div class="left_common">
-                <input type="text" value="title" id="title" class="title" th:value="${timer.title}"/>
-              </div>
-              <div class="left_common">
-                <textarea id="content" th:text="${timer.content}">content</textarea>
-              </div>
+                <input type="text" value="title" id="title" class="left_common title" th:value="${timer.title}"/>
+                <textarea class="left_common textbox" id="content" th:text="${timer.content}"></textarea>
             </div>
             <div class="bot_right">
               <div>
-                <button class="timerBtn" id="updateBtn" onclick="timerUpdate()">update</button>
+                <button class="updateBtn" id="updateBtn" onclick="timerUpdate()">update</button>
               </div>
               <div>
                 <button class="timerBtn" id="deleteBtn" onclick="timerDelete()">delete</button>

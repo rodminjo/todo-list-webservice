@@ -56,7 +56,7 @@
           </th:block>
           <th:block th:unless="${posts.userId.equals(userId)}">
             <div class="boardTitle" th:text="${posts.title}">title</div>
-            <div class="boardContent" th:text="${posts.content}">2023-04-01일기</div>
+            <div class="boardContent" th:text="${posts.content}">2023-04-01</div>
           </th:block>
         </section>
         <section class="right">
@@ -129,7 +129,6 @@
                         th:if="${reply.replyLevel} > 1"
                         th:text="'@'+${reply.replyParent}"
                       ></span>
-
                       <input th:id="'update'+${i.index}" th:value="${reply.content}" />
                     </div>
                   </div>

@@ -157,7 +157,7 @@ table {
 }
 .thead-row {
   position: absolute;
-  margin-left: 9rem;
+  margin-left: 11rem;
   z-index: 999;
 }
 
@@ -166,11 +166,11 @@ tbody tr:nth-child(1) {
 }
 tbody {
   display: block;
-  margin-left: 9rem;
+  margin-left: 11rem;
 }
 th,
 td {
-  min-width: 9rem;
+  min-width: 11rem;
   height: 3rem;
   box-sizing: border-box;
 }

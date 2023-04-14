@@ -40,11 +40,12 @@ public class Posts extends BaseTimeEntity {
     @ColumnDefault("0")
     private Integer viewCount;
 
-    @OneToMany(mappedBy = "posts", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "posts")
     private List<UploadPosts> uploadPosts= new ArrayList<>();
 
-    @OneToMany(mappedBy = "posts", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "posts")
     private List<ReplyPosts> replyPosts= new ArrayList<>();
+
 
 
     @Builder

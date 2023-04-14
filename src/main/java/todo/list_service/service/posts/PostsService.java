@@ -164,7 +164,6 @@ public class PostsService {
         User user = userService.findById(userId);
         Posts posts = postsRepository.findById(postId)
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id: " + postId));
-
         return replyPostsService.save(requestDto,user,posts);
     }
 

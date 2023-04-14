@@ -15,7 +15,7 @@
 
   <th:block th:replace="layout/header::headerFragment"></th:block>
   <section class="freeBoard">
-    <h3>DCINSIDE PLANT GALLERY</h3>
+    <h3>Board</h3>
     <div class="freeBoard-top">
       <select class="freeBoard-top_option" id="sort" onchange="sort()">
         <option value="1" th:selected="${select}==1">최신순</option>
@@ -54,8 +54,7 @@
           <th:block th:each="post : ${posts}">
             <tbody>
             <td>
-              <img th:if="${post.storedFileName != null}" th:src="@{/display?file={fileName}(fileName=${post.storedFileName})}" alt="#" class="img" />
-              <img th:unless="${post.storedFileName != null}" src="https://www.flaticon.com/kr/free-icons/-" alt="#" class="img" />
+              <img th:if="${post.storedFileName}" th:src="@{/display?file={fileName}(fileName=${post.storedFileName})}" alt="#" class="img" />
             </td>
             <td><a th:href="@{/posts/update/{id}(id=${post.id})}" th:text="${post.title}">타이틀</a></td>
             <td th:text="${post.author}">글쓴이</td>
