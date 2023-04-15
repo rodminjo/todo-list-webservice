@@ -31,13 +31,14 @@ public class PostsService {
         // User 불러오기
         User user = userService.findById(requestDto.getUserId());
 
-        // 저장할 Post 생성
-        Posts post = Posts.builder()
+        Posts posts = Posts.builder()
                 .title(requestDto.getTitle())
                 .content(requestDto.getContent())
                 .user(user)
                 .build();
-        Posts savedPost = postsRepository.save(post);
+
+        // 저장할 Post 생성
+        Posts savedPost = postsRepository.save(posts);
 
         // multipart 형식 저장하고 주소리스트 반환
         List<UploadPosts> uploadPostsList = uploadService.postsSave(files,savedPost);
