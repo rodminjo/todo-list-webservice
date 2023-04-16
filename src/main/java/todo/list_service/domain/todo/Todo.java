@@ -25,7 +25,7 @@ public class Todo extends BaseTimeEntity{
     @JoinColumn(name = "USER_ID")
     private User user;
 
-    @OneToMany(mappedBy = "todo", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "todo")
     private List<UploadTodo> uploadTodo = new ArrayList<>();
 
     @Column(nullable = false)
@@ -50,7 +50,10 @@ public class Todo extends BaseTimeEntity{
         this.title = title;
         this.content = content;
         this.todoDate = todoDate;
+    }
 
+    public void userAdd(User user){
+        this.user = user;
     }
 
     public void update(String title, String content, String todoDate){

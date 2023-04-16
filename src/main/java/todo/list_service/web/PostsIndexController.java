@@ -6,8 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
-import todo.list_service.config.auth.LoginUser;
-import todo.list_service.config.auth.dto.SessionUser;
+import todo.list_service.config.oauth.LoginUser;
+import todo.list_service.config.oauth.dto.SessionUser;
 import todo.list_service.service.posts.PostsService;
 import todo.list_service.web.dto.posts.PostsResponseDto;
 

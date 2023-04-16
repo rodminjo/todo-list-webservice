@@ -12,7 +12,7 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-import todo.list_service.config.auth.dto.SessionUser;
+import todo.list_service.config.oauth.dto.SessionUser;
 import todo.list_service.domain.timer.TimerRepository;
 import todo.list_service.domain.user.Role;
 import todo.list_service.domain.user.User;

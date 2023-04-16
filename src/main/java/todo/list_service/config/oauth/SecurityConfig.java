@@ -1,4 +1,4 @@
-package todo.list_service.config.auth;
+package todo.list_service.config.oauth;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

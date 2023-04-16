@@ -17,7 +17,7 @@
           <h3>todo list</h3>
 
           <div class="date-input-btn">
-            <input class="dateInput" type="date" th:value="${date}" onchange="dateChange()" />
+            <input class="dateInput" type="date" th:value="${todos.get(0).todoDate}" onchange="dateChange()" />
 
             <div class="addTodo">
               <button class="addTodoBtn" onclick="addNewTodo()">Add New Todo</button>

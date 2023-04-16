@@ -16,7 +16,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-import todo.list_service.config.auth.dto.SessionUser;
+import todo.list_service.config.oauth.dto.SessionUser;
 import todo.list_service.domain.user.Role;
 import todo.list_service.domain.user.User;
 import todo.list_service.domain.user.UserRepository;

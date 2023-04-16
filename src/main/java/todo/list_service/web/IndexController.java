@@ -10,8 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import todo.list_service.config.auth.LoginUser;
-import todo.list_service.config.auth.dto.SessionUser;
+import todo.list_service.config.oauth.LoginUser;
+import todo.list_service.config.oauth.dto.SessionUser;
 import todo.list_service.service.user.UserService;
 
 import java.io.File;

@@ -26,15 +26,21 @@ public class TodoService {
 
     @Transactional
     public Long save(TodoSaveRequestDto requestDto, List<MultipartFile> files) throws Exception {
+
         // User 불러오기
         User user = userService.findById(requestDto.getUserId());
 
-        // 저장할 Todo 생성 후 저장
-        Todo todo = Todo.builder().user(user).title(requestDto.getTitle()).content(requestDto.getContent()).todoDate(requestDto.getTodoDate()).build();
+        // 저장할 Todo 생성
+        Todo todo = requestDto.toEntity();
+
+        // 저장할 todo에 user 저장
+        todo.userAdd(user);
+
+        // todo 저장
         Todo savedTodo = todoRepository.save(todo);
 
         //file uploadTodo에 저장
-        List<UploadTodo> uploadTodoList = uploadService.todoSave(files,savedTodo);
+        uploadService.todoSave(files,savedTodo);
 
 
         return savedTodo.getId();
@@ -42,9 +48,11 @@ public class TodoService {
 
     @Transactional
     public Long update(TodoUpdateRequestDto requestDto, List<MultipartFile> files) throws Exception {
+
         // todo 객체 불러오기
         Todo savedTodo = todoRepository.findById(requestDto.getTodoId())
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시물이 없습니다"));
+
         //todo 정보 업데이트
         savedTodo.update(requestDto.getTitle(),requestDto.getContent(), requestDto.getTodoDate());
 
@@ -63,13 +71,17 @@ public class TodoService {
         return savedTodo.getId();
     }
 
-
+    /**
+     *  설명 : Todo 메인페이지에 표시될 날짜에 맞는 데이터 출력
+     **/
     @Transactional(readOnly = true)
     public List<TodosListResponseDto> findByUserIdAndTakeAllDesc(String date, Long id){
+
+        // 회원 id와 선택 날짜를 받아 해당하는 데이터 리스트 반환
         List<TodosListResponseDto> listDto = todoRepository.findByUserIdAndAllDesc(date, id).stream()
                 .map(todos -> new TodosListResponseDto(todos)).collect(Collectors.toList());
 
-
+        // todo id를 받아 해당 데이터에 맞는 썸네일용 이미지 데이터 DTO에 추가
         for (TodosListResponseDto list : listDto) {
             String thumbnailStoredFileName = uploadService.FindThumbnailByTodoId(list.getId());
 

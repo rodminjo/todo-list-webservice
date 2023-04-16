@@ -1,10 +1,13 @@
 package todo.list_service.web;
 
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import todo.list_service.config.auth.LoginUser;
-import todo.list_service.config.auth.dto.SessionUser;
+
+import todo.list_service.config.oauth.LoginUser;
+import todo.list_service.config.oauth.dto.SessionUser;
+
 import todo.list_service.service.todo.TodoService;
 import todo.list_service.web.dto.todo.TodoRequestimportanceCheckedDto;
 import todo.list_service.web.dto.todo.TodoSaveRequestDto;
@@ -19,18 +22,23 @@ public class TodoApiController {
 
     private final TodoService todoService;
 
+    /**
+     *  설명 : 저장 페이지에서 저장버튼 클릭시 이미지(multipart), 데이터(json) 을 받아 저장한다.
+     *      전달값 : UserId, title, content, todoDate, files
+     *      반환 : todoId
+     * */
 
     @PostMapping("/api/v1/todo")
     public Long save(@RequestPart(value = "key") TodoSaveRequestDto requestDto,
                      @RequestPart(value = "file", required = false) List<MultipartFile> files,
                      @LoginUser SessionUser user) throws Exception {
-        if (user != null) {
-            requestDto.setUserId(user.getId());
-        }
-        System.out.println("requestDto = " + requestDto);
-        System.out.println("files = " + files);
 
+        // DTO에 userId 입력
+        requestDto.setUserId(user.getId());
+
+        // DTO, file을 전달하여 사진저장
         return todoService.save(requestDto, files);
+
     }
 
     @PostMapping("/api/v1/todo/{id}")

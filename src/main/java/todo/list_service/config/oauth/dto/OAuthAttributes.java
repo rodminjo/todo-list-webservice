@@ -1,4 +1,4 @@
-package todo.list_service.config.auth.dto;
+package todo.list_service.config.oauth.dto;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -35,12 +35,12 @@ public class OAuthAttributes {
                 .build();
     }
 
+    /* 구글, 네이버 판단하기 위한 메소드 */
     public static OAuthAttributes of(String registrationId, String userNameAttributeName,
                                      Map<String, Object> attributes){
         if ("naver".equals((registrationId))){
-            System.out.println("registrationId = " + registrationId);
-            System.out.println("userNameAttributeName = " + userNameAttributeName);
-            return ofNaver("id", attributes); // 여기서 userNameAttributeName은 response, 이걸 id로 바꿔주기 위해 직접 입력
+            /* 네이버의 경우 구글과 달리 userNameAttributeName은 response, 이걸 id로 바꿔주기 위해 직접 입력 */
+            return ofNaver("id", attributes);
         }
 
         return ofGoogle(userNameAttributeName, attributes);

@@ -3,8 +3,6 @@ package todo.list_service.web.dto.todo;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
-import org.springframework.web.multipart.MultipartFile;
 import todo.list_service.domain.todo.Todo;
 
 import java.util.List;
@@ -26,11 +24,12 @@ public class TodoSaveRequestDto {
         this.todoDate = todoDate;
     }
 
-
-
     public void setUserId(Long userId){
         this.userId = userId;
+    }
 
+    public Todo toEntity(){
+        return Todo.builder().title(this.title).content(this.content).todoDate(this.todoDate).build();
     }
 
 }

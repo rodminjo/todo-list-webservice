@@ -4,8 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import todo.list_service.config.auth.LoginUser;
-import todo.list_service.config.auth.dto.SessionUser;
+import todo.list_service.config.oauth.LoginUser;
+import todo.list_service.config.oauth.dto.SessionUser;
 import todo.list_service.service.user.UserService;
 import todo.list_service.web.dto.mypage.MypageIdCheckRequestDto;
 
