@@ -5,12 +5,15 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
+
 import todo.list_service.domain.todo.Todo;
-import todo.list_service.domain.todo.TodoRepository;
-import todo.list_service.domain.uploadTodo.UploadTodo;
 import todo.list_service.domain.user.User;
+import todo.list_service.domain.uploadTodo.UploadTodo;
+
+import todo.list_service.domain.todo.TodoRepository;
 import todo.list_service.service.upload.UploadService;
 import todo.list_service.service.user.UserService;
+
 import todo.list_service.web.dto.todo.*;
 
 import java.util.List;
@@ -94,6 +97,9 @@ public class TodoService {
     }
 
 
+    /**
+     * 설명 : todo id 를 받아 상세 화면에 출력될 데이터 반환
+     * */
     @Transactional(readOnly = true)
     public TodoResponseDto findByIdToShow(Long id){
         Todo todo = todoRepository.findById(id)
@@ -103,7 +109,9 @@ public class TodoService {
     }
 
 
-
+    /**
+     * 설명 : todo id를 받아 데이터 삭세
+     * */
     @Transactional
     public String delete(Long id) {
         //Todo 객체 찾아오기
@@ -111,21 +119,39 @@ public class TodoService {
         // 날짜 데이터 반환을 위한 저장
         String deleteTodoDate = todo.getTodoDate();
 
-        // 삭제
+        // 이미지 삭제
         uploadService.todoDelete(todo.getId());
+
+        // 글 삭제
         todoRepository.delete(todo);
 
         return deleteTodoDate;
     }
 
+
+    /**
+     * 설명 : todo 중요도를 변경
+     * */
     public Long importanceChange(TodoRequestimportanceCheckedDto requestImportanceDto) {
+
+        // todo 찾아오기
         Todo todo = todoRepository.findById(requestImportanceDto.getId()).orElseThrow(() -> new IllegalArgumentException("해당 게시물이 없습니다"));
+
+        // todo 중요도 변경
         todo.importanceChange(requestImportanceDto.getImportance());
 
         return todo.getId();
     }
+
+    /**
+     * 설명 : todo 완료여부를 변경
+     * */
     public Long checkedChange(TodoRequestimportanceCheckedDto requestImportanceDto) {
+
+        // todo 찾아오기
         Todo todo = todoRepository.findById(requestImportanceDto.getId()).orElseThrow(() -> new IllegalArgumentException("해당 게시물이 없습니다"));
+
+        // todo 완료여부 변경
         todo.checkedChange(requestImportanceDto.getChecked());
 
         return todo.getId();

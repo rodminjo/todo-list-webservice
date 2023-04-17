@@ -41,14 +41,17 @@ public class TodoApiController {
 
     }
 
+    /**
+     * 설명 : 수정 화면에서 정보를 수정한다
+     *      전달값 : todoId, title, content, todoDate
+     *      반환값 : todoId
+     * */
+
     @PostMapping("/api/v1/todo/{id}")
     public Long update(@PathVariable Long id,
                        @RequestPart(value = "key") TodoUpdateRequestDto requestDto,
                        @RequestPart(value = "file", required = false)List<MultipartFile> files) throws Exception {
 
-        System.out.println("requestDto = " + requestDto);
-        System.out.println("files = " + files);
-        System.out.println("id = " + id);
 
         requestDto.setTodoId(id);
 
@@ -56,23 +59,41 @@ public class TodoApiController {
     }
 
 
+    /**
+     * 설명 : todo id를 받아 삭제한다.
+     *      전달값 : todoId
+     *      반환값 : 삭제된 id
+     * */
+
     @DeleteMapping("/api/v1/todo/{id}")
     public Long delete(@PathVariable Long id){
+
         String todoDate = todoService.delete(id);
+
         return id;
     }
 
+    /**
+     * 설명 : 메인페이지에서 중요도를 설정할때 저장한다
+     * */
+
     @PostMapping("/api/v1/todo/importance/{id}")
     public Long importanceChange(@PathVariable Long id, @RequestBody TodoRequestimportanceCheckedDto requestDto){
+
         requestDto.setId(id);
-        System.out.println("requestDto = " + requestDto.getImportance());
+
         return todoService.importanceChange(requestDto);
     }
 
+    /**
+     * 설명 : 메인페이지에서 완료여부를 설정할 때 저장한다.
+     * */
+
     @PostMapping("/api/v1/todo/checked/{id}")
     public Long checkedChange(@PathVariable Long id, @RequestBody TodoRequestimportanceCheckedDto requestDto){
+
         requestDto.setId(id);
-        System.out.println("requestDto = " + requestDto.getChecked());
+
         return todoService.checkedChange(requestDto);
     }
 
