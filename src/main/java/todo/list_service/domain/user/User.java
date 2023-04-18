@@ -47,6 +47,9 @@ public class User extends BaseTimeEntity {
         return this.role.getKey();
     }
 
+    /**
+     * 설명 : 닉네임을 변경한다
+     * */
     public void nickNameSetting(String nickName){
         this.nickName = nickName;
     }

@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import todo.list_service.domain.posts.Posts;
 
 @Getter
 @ToString
@@ -26,4 +27,10 @@ public class PostsSaveRequestDto {
         this.userId = userId;
     }
 
+    public Posts toEntity(){
+        return Posts.builder()
+                .title(this.title)
+                .content(this.content)
+                .build();
+    }
 }

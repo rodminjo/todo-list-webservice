@@ -3,14 +3,13 @@ package todo.list_service.domain.uploadTodo;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
+
 import todo.list_service.domain.BaseTimeEntity;
-import todo.list_service.domain.posts.Posts;
 import todo.list_service.domain.todo.Todo;
 
 import javax.persistence.*;
 
-@ToString
+
 @Getter
 @NoArgsConstructor
 @Entity
@@ -32,6 +31,9 @@ public class UploadTodo extends BaseTimeEntity {
     private Long fileSize;
 
 
+    /**
+     * 설명 : JPA 연관관계 편의 메서드를 통해 uploadTodo를 set할 경우 todo에도 set되도록 설정
+     * */
     public void setTodo(Todo todo) {
         if (this.todo != null) {
             this.todo.getUploadTodo().remove(this);

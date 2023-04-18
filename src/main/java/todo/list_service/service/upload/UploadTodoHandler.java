@@ -4,10 +4,13 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartFile;
-import todo.list_service.domain.uploadPosts.UploadPosts;
 import todo.list_service.domain.uploadTodo.UploadTodo;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -90,5 +93,16 @@ public class UploadTodoHandler {
 
 
         return fileList;
+    }
+
+    public void delete(String storedFileName) {
+        String absolutePath = new File("").getAbsolutePath() + File.separator+File.separator;
+
+        try{
+            Path file = Paths.get(absolutePath+storedFileName);
+            Files.deleteIfExists(file);
+        } catch (IOException e) {
+            System.out.println("파일 삭제에 실패하였습니다. "+e.getMessage());
+        }
     }
 }

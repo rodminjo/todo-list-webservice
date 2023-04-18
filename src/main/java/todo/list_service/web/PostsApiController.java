@@ -19,6 +19,9 @@ public class PostsApiController {
     private final PostsService postsService;
 
 
+    /**
+     * 설명 : 게시글 저장
+     * */
     @PostMapping("/api/v1/posts")
     public Long save(@RequestPart(value = "key") PostsSaveRequestDto requestDto,
                      @RequestPart(value = "file", required = false) List<MultipartFile> files,
@@ -30,6 +33,9 @@ public class PostsApiController {
         return postsService.save(requestDto, files);
     }
 
+    /**
+     * 설명 : 게시글 수정
+     * */
     @PostMapping("/api/v1/posts/{id}")
     public Long update(@PathVariable Long id,
                        @RequestPart(value ="key") PostsUpdateRequestDto requestDto,
@@ -41,12 +47,18 @@ public class PostsApiController {
         return postsService.update(requestDto, files);
     }
 
+    /**
+     * 설명 : 게시글 삭제
+     * */
     @DeleteMapping("/api/v1/posts/{id}")
     public Long delete(@PathVariable Long id){
 
         return postsService.delete(id);
     }
 
+    /**
+     * 설명 : 게시글 상세조회에서 댓글을 저장한다.
+     * */
     @PostMapping("/api/v1/posts/{id}/reply")
     public Long saveReply(@PathVariable Long id,
                           @RequestBody ReplyPostsSaveRequestDto requestDto,
@@ -55,16 +67,22 @@ public class PostsApiController {
         return postsService.replySave(requestDto, id, user.getId());
     }
 
+    /**
+     * 설명 : 게시글 상세조회에서 댓글을 수정한다.
+     * */
     @PostMapping("/api/v1/posts/{id}/reply/{replyId}")
     public Long updateReply(@PathVariable Long id,
                           @PathVariable Long replyId,
                           @RequestBody ReplyPostsSaveRequestDto requestDto,
                           @LoginUser SessionUser user) {
-        //ReplyPostsUpdateDto 고려하기
+
 
         return postsService.replyUpdate(requestDto, id ,replyId, user.getId());
     }
 
+    /**
+     * 설명 : 게시글 상세조회에서 댓글을 삭제한다
+     * */
     @DeleteMapping("/api/v1/posts/{id}/reply/{replyId}")
     public Long deleteReply(@PathVariable Long id,
                             @PathVariable Long replyId,

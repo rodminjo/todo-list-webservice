@@ -9,7 +9,6 @@ import todo.list_service.domain.BaseTimeEntity;
 import todo.list_service.domain.replyposts.ReplyPosts;
 import todo.list_service.domain.uploadPosts.UploadPosts;
 import todo.list_service.domain.user.User;
-import todo.list_service.web.dto.posts.PostsSaveRequestDto;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -57,7 +56,9 @@ public class Posts extends BaseTimeEntity {
         this.viewCount = viewCount;
     }
 
-
+    public void addUser(User user) {
+        this.user = user;
+    }
     public void update(String title, String content) {
         this.title = title;
         this.content = content;

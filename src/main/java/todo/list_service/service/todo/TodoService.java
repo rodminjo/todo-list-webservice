@@ -8,7 +8,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import todo.list_service.domain.todo.Todo;
 import todo.list_service.domain.user.User;
-import todo.list_service.domain.uploadTodo.UploadTodo;
 
 import todo.list_service.domain.todo.TodoRepository;
 import todo.list_service.service.upload.UploadService;
@@ -27,6 +26,9 @@ public class TodoService {
     private final UploadService uploadService;
 
 
+    /**
+     * 설명 : todo 를 저장한다
+     * */
     @Transactional
     public Long save(TodoSaveRequestDto requestDto, List<MultipartFile> files) throws Exception {
 
@@ -49,6 +51,11 @@ public class TodoService {
         return savedTodo.getId();
     }
 
+
+    /**
+     * 설명 : todo 를 수정한다
+     *      전달값 : title, content, todoDate, file
+     * */
     @Transactional
     public Long update(TodoUpdateRequestDto requestDto, List<MultipartFile> files) throws Exception {
 
@@ -59,7 +66,7 @@ public class TodoService {
         //todo 정보 업데이트
         savedTodo.update(requestDto.getTitle(),requestDto.getContent(), requestDto.getTodoDate());
 
-
+        // 파일이 존재하는지 확인
         if (files == null || files.isEmpty()) {
             // 요청 파일이 없을때 전부 삭제
             uploadService.todoDelete(savedTodo.getId());
@@ -68,7 +75,7 @@ public class TodoService {
             uploadService.todoDelete(savedTodo.getId());
 
             //새로운 요청으로 저장
-            List<UploadTodo> uploadTodoList = uploadService.todoSave(files, savedTodo);
+            uploadService.todoSave(files, savedTodo);
         }
 
         return savedTodo.getId();

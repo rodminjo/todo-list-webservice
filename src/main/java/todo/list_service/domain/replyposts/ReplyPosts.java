@@ -3,6 +3,7 @@ package todo.list_service.domain.replyposts;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
 import todo.list_service.domain.BaseTimeEntity;
 import todo.list_service.domain.posts.Posts;
 import todo.list_service.domain.user.User;
@@ -61,11 +62,15 @@ public class ReplyPosts extends BaseTimeEntity {
             }
     }
 
+    public void addUser(User user){
+        this.user = user;
+    }
+
     public void setReplyGroup(Long replyGroup) {
         this.replyGroup = replyGroup;
     }
 
-    public void update(ReplyPostsSaveRequestDto requestDto){
-        this.replyContent = requestDto.getContent();
+    public void update(String replyContent){
+        this.replyContent = replyContent;
     }
 }
