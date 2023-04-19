@@ -44,7 +44,6 @@ class PostsApiControllerTest {
     @LocalServerPort
     private int port;
     
-
     @Autowired
     private PostsRepository postsRepository;
     @Autowired

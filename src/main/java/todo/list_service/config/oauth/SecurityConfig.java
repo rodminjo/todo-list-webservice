@@ -17,7 +17,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            .csrf().disable().headers().frameOptions().disable()// h2 콘솔창에 보이도록 설정
+            .csrf().disable().headers().frameOptions().disable()// csrf와 x-frame-option 비활성화. h2-console 사용을 위해 잠시 disable
                 .and()
                     .authorizeRequests() // URL별 권한 관리 시작
                     .antMatchers("/","/main","/jquery/**","/assets/**","/css/**","/images/**","/js/**","/h2-console/**","/login","/display").permitAll() // 인덱스나 css조회, 이미지 조회 등 url는 전체 열람
@@ -32,7 +32,6 @@ public class SecurityConfig {
 
         http
             .sessionManagement()
-            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .maximumSessions(1)
             .maxSessionsPreventsLogin(true)
             .expiredUrl("/");
