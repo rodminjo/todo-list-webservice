@@ -26,11 +26,10 @@ public class TimerIndexController {
     @GetMapping("/timer/{date}")
     public String timerIndex(@PathVariable String date, Model model, @LoginUser SessionUser user) {
         model.addAttribute("date", date);
+        model.addAttribute("timers", timerService.findByUserIdAndTakeAllDesc(date, user.getId()));
 
         if (user!= null) {
-            model.addAttribute("timers", timerService.findByUserIdAndTakeAllDesc(date, user.getId()));
             model.addAttribute("userName", user.getName());
-
         }
         return "timer-index";
     }
@@ -51,10 +50,8 @@ public class TimerIndexController {
         if (user!= null) {
             model.addAttribute("userName", user.getName());
         }
-        TimerResponseDto responseDto = timerService.findById(id);
-        responseDto.setId(id);
 
-        model.addAttribute("timer", responseDto);
+        model.addAttribute("timer", timerService.findById(id));
 
         return "timer-update";
     }

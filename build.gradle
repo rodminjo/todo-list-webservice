@@ -37,6 +37,7 @@ dependencies {
 	runtimeOnly 'com.h2database:h2:1.4.197'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
 	// 스프링 시큐리티로 인한 테스트시 권한 거부를 해결하기 위함
 	testImplementation 'org.springframework.security:spring-security-test'
 }

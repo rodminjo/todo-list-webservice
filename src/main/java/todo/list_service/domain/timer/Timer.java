@@ -72,10 +72,10 @@ public class Timer extends BaseTimeEntity {
         }
     }
 
-    public void update(TimerUpdateRequestDto requestDto, Category category){
+    public void update(TimerUpdateRequestDto requestDto){
         this.title = requestDto.getTitle();
         this.content = requestDto.getContent();
-        this.category = category;
+        this.category = Category.valueOf(requestDto.getCategory().toUpperCase());
     }
 
 

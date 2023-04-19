@@ -5,6 +5,11 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import todo.list_service.domain.timer.Category;
+import todo.list_service.domain.timer.Timer;
+import todo.list_service.domain.user.User;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -30,6 +35,17 @@ public class TimerSaveRequestDto {
         this.startTime = startTime;
         this.doingTime = doingTime;
     }
+
+    /**
+     * 설명 : Timer 객체 생성
+     * */
+    public Timer toEntity(User user){
+
+        return Timer.builder().user(user).title(this.title).content(this.content)
+                .todoDate(LocalDate.now().toString()).category(Category.valueOf(this.category.toUpperCase()))
+                .startTime(this.startTime).doingTime(this.doingTime).build();
+    }
+
 
     public void setUserId(Long userId) {
         this.userId = userId;

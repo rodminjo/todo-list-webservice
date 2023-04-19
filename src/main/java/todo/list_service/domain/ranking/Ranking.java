@@ -53,6 +53,7 @@ public class Ranking extends BaseTimeEntity {
         this.totalDoingTime = totalDoingTime;
     }
 
+
     public void updateDoingTime(Integer plusDoingTime) {
         this.totalDoingTime += plusDoingTime;
     }

@@ -18,6 +18,11 @@ import java.util.List;
 
 @Component
 public class UploadTodoHandler {
+
+    /**
+     * 설명 : 들어온 MultiPartFile을 저장하고 해당 목록을 반환
+     * */
+
     public List<UploadTodo> parseFileInfo(List<MultipartFile> multipartFiles) throws Exception{
         // 반환 파일 리스트
         List<UploadTodo> fileList = new ArrayList<>();
@@ -95,6 +100,10 @@ public class UploadTodoHandler {
         return fileList;
     }
 
+
+    /**
+     * 설명 : 실제 파일 삭제
+     * */
     public void delete(String storedFileName) {
         String absolutePath = new File("").getAbsolutePath() + File.separator+File.separator;
 

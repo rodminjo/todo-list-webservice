@@ -244,10 +244,13 @@ class PostsApiControllerTest {
         List<Posts> all = postsRepository.findAll();
         Long savedPostsId = all.get(all.size() - 1).getId();
 
+
         // 댓글 저장 요청
         String replyPostsContent = "test reply";
-        Integer replyLevel = 1;
+        Integer replyLevel = 0;
         ReplyPostsSaveRequestDto replySaveRequestDto = ReplyPostsSaveRequestDto.builder()
+                .replyLevel(0)
+                .replyParent("haha")
                 .content(replyPostsContent)
                 .build();
         //댓글저장 url
@@ -322,6 +325,8 @@ class PostsApiControllerTest {
         // 댓글 저장 요청
         String replyPostsContent = "test reply";
         ReplyPostsSaveRequestDto replySaveRequestDto = ReplyPostsSaveRequestDto.builder()
+                .replyLevel(0)
+                .replyParent("haha")
                 .content(replyPostsContent)
                 .build();
 
@@ -380,6 +385,8 @@ class PostsApiControllerTest {
         // 댓글 저장 요청
         String replyPostsContent = "test reply";
         ReplyPostsSaveRequestDto replySaveRequestDto = ReplyPostsSaveRequestDto.builder()
+                .replyLevel(0)
+                .replyParent("haha")
                 .content(replyPostsContent)
                 .build();
 
@@ -413,8 +420,6 @@ class PostsApiControllerTest {
         List<ReplyPosts> updatedReplyPostsList = replyPostsRepository.findAll();
         Assertions.assertThat(updatedReplyPostsList.get(0).getReplyContent()).isEqualTo(updateReplyPostsContent);
     }
-
-
 
 
 

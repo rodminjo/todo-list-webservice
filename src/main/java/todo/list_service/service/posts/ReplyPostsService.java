@@ -26,36 +26,26 @@ public class ReplyPostsService {
      * */
     @Transactional
     public Long save(ReplyPostsSaveRequestDto requestDto, User user, Posts posts){
-        ReplyPosts savedReplyPosts;
 
+        // 첫 댓글: level =0, order= 0 group = 자기댓글id
+        // 대 댓글: 가져온 값 사용
+        ReplyPosts replyPosts = requestDto.toEntity();
+
+        // user 저장
+        replyPosts.addUser(user);
+
+        // posts 저장
+        replyPosts.setPosts(posts);
+
+        // 댓글 저장
+        ReplyPosts savedReplyPosts = replyPostsRepository.save(replyPosts);
+
+        // 첫 댓글 판별
         if (requestDto.getReplyLevel()==0){
-            // 첫 댓글: level =0, order= 0 group = 자기댓글id
-            ReplyPosts replyPosts = requestDto.toEntity();
-
-            // user 저장
-            replyPosts.addUser(user);
-
-            // posts 저장
-            replyPosts.setPosts(posts);
-
-            // 댓글 저장
-            savedReplyPosts = replyPostsRepository.save(replyPosts);
-
+            
             // 저장된 댓글 id 를 group id로 저장
             savedReplyPosts.setReplyGroup(savedReplyPosts.getId());
 
-        }else {
-            // 대 댓글
-            ReplyPosts replyPosts = requestDto.toEntity();
-
-            // user 저장
-            replyPosts.addUser(user);
-
-            // posts 저장
-            replyPosts.setPosts(posts);
-
-            // 댓글 저장
-            savedReplyPosts = replyPostsRepository.save(replyPosts);
         }
 
         return savedReplyPosts.getId();

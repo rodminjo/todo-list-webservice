@@ -19,7 +19,12 @@ import javax.servlet.http.HttpSession;
 import java.util.Collections;
 import java.util.Random;
 
-//OAuth2UserService를 구현하여 로그인 이후 가져온 사용자 정보들을 기반으로 가입, 정보 수정등 기능 지원
+
+/**
+ * 설명 : OAuth2UserService를 구현하여 로그인 이후 가져온 사용자 정보들을 기반으로 가입, 정보 수정등 기능 지원
+* */
+
+
 @RequiredArgsConstructor
 @Service
 public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User>{
@@ -61,13 +66,18 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         return defaultOAuth2User;
     }
 
-    /* 소셜로그인시 이메일에 매칭되는 기존 회원이 존재하면 이름과 프로필사진, 수정날짜만 업데이트하고 기존의 데이터는 그대로 보존 */
+    /**
+     * 설명 : 소셜로그인시 이메일에 매칭되는 기존 회원이 존재하면 이름과 프로필사진, 수정날짜만 업데이트하고 기존의 데이터는 그대로 보존
+     * */
     private User saveOrUpdate(OAuthAttributes attributes) {
+        // User 불러오기
         User user = userRepository.findByEmail(attributes.getEmail())
                 .map(entity -> entity.update(attributes.getName(), attributes.getPicture()))
                 .orElse(attributes.toEntity());
 
         /* 처음 가입한 회원의 경우 10문자로 이루어진 랜덤 닉네임 생성*/
+
+        // 닉네임 없을경우 랜덤 생성
         if (user.getNickName() == null){
             //a~z로 이루어진 10자리 랜덤문자열 생성
             Random random = new Random();

@@ -3,6 +3,7 @@ package todo.list_service.web.dto.timer;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import todo.list_service.domain.timer.Timer;
 
 import java.time.LocalDateTime;
 
@@ -17,19 +18,16 @@ public class TimerResponseDto {
     private LocalDateTime startTime;
     private Integer doingTime;
 
-    @Builder
-    public TimerResponseDto(String title, String content, String category, LocalDateTime startTime, Integer doingTime) {
-        this.title = title;
-        this.content = content;
-        this.category = category;
-        this.startTime = startTime;
-        this.doingTime = doingTime;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public TimerResponseDto(Timer timer) {
+        this.id = timer.getId();
+        this.title = timer.getTitle();
+        this.content = timer.getContent();
+        this.category = timer.getCategory().toString();
+        this.startTime = timer.getStartTime();
+        this.doingTime = timer.getDoingTime();
 
+    }
 
 
 

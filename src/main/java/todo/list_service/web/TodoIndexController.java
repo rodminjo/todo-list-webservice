@@ -38,6 +38,9 @@ public class TodoIndexController {
     @GetMapping("/todo/{date}")
     public String todoIndex(@PathVariable String date, Model model, @LoginUser SessionUser user) {
 
+        // 날짜 모델에 넣어주기
+        model.addAttribute("todoDate", date);
+
         // 유저 닉네임 정보 넘겨주기 위함
         if (user!= null) {
             model.addAttribute("userName", user.getNickName());

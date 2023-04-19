@@ -22,8 +22,8 @@
             <input class="dateInput" type="date" th:value="${date}" onchange="dateChange()" />
             <button class="timerBtn" onclick="addNewTodo()">측정시작</button>
           </div>
-          <div class="emptyTimer" th:if="${timers.isEmpty()}">타이머를 시작하세요</div>
-          <div class="table" th:unless="${timers.isEmpty()}">
+          <div class="emptyTimer" th:if="${timers != null || timers.size()==0}">타이머를 시작하세요</div>
+          <div class="table" th:unless="${timers != null || timers.size()==0}">
             <table>
               <thead>
                 <tr class="thead-row">
