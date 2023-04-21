@@ -3,7 +3,6 @@ package todo.list_service.web;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,15 +65,8 @@ class PostsApiControllerTest {
                 .apply(springSecurity())
                 .build();
     }
-    
-    @AfterEach
-    void tearDown() {
-        uploadPostsRepository.deleteAll();
-        replyPostsRepository.deleteAll();
-        postsRepository.deleteAll();
-        userRepository.deleteAll();
-    }
-    
+
+
     @Test
     @WithMockUser(roles = "USER")
     void Posts_등록() throws Exception {
@@ -199,8 +191,8 @@ class PostsApiControllerTest {
         Assertions.assertThat(updateAll.get(0).getViewCount()).isSameAs(0);
 
         // 업로드 파일 삭제 확인
-        List<UploadPosts> allByPostId = uploadPostsRepository.findAllByPostId(all.get(0).getId());
-        Assertions.assertThat(allByPostId).isEmpty();
+        List<UploadPosts> allByPostId = uploadPostsRepository.findAllByPostId(savedPostsId);
+        Assertions.assertThat(allByPostId.size()).isSameAs(0);
     }
 
     @Test
